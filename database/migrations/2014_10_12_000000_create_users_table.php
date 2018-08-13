@@ -18,6 +18,11 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->integer('empresa_id')->nullable();
+
+            $table->boolean('ativo')->default(true);
+            $table->uuid('uuid');
+
             $table->rememberToken();
             $table->timestamps();
         });

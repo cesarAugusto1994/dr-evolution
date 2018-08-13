@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
+use Emadadly\LaravelUuid\Uuids;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasRoleAndPermission, Uuids;
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'empresa_id', 'ativo',
     ];
 
     /**
@@ -26,4 +28,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function empresa()
+    {
+        return $this->belongsTo('App\Models\Empresa');
+    }
 }

@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title_prefix', config('adminlte.title_prefix', ''))
 @yield('title', config('adminlte.title', 'AdminLTE 2'))
 @yield('title_postfix', config('adminlte.title_postfix', ''))</title>
@@ -24,6 +25,8 @@
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/AdminLTE.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('/css/sweetalert2.min.css') }}">
 
     @if(config('adminlte.plugins.datatables'))
         <!-- DataTables with bootstrap 3 style -->
@@ -64,6 +67,8 @@
 @endif
 
 @yield('adminlte_js')
+
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 
 </body>
 </html>

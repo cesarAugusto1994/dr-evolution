@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'purple-light',
+    'skin' => 'blue',
 
     /*
     |--------------------------------------------------------------------------
@@ -113,6 +113,12 @@ return [
             'text' => 'Blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
+        ],
+        [
+            'text'        => 'Empresas',
+            'url'         => 'admin/companies',
+            'icon'        => 'building',
+            /*'can'         => 'manage-empresas'*/
         ],
         [
             'text'        => 'Pages',
