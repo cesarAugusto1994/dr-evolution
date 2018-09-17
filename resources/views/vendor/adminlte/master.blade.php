@@ -70,5 +70,70 @@
 
     <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+    <script>
+
+      $('.money').mask('000.000.000.000.000,00', {reverse: true});
+      $('.date').mask('00/00/0000');
+      $('.percent').mask('##0,00%', {reverse: true});
+
+    </script>
+
+    <script>
+
+      $(".btnRemoveItem").click(function(e) {
+          var self = $(this);
+
+          swal({
+            title: 'Remover este item?',
+            text: "Não será possível recuperá-lo!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim',
+            cancelButtonText: 'Cancelar'
+            }).then((result) => {
+            if (result.value) {
+
+              e.preventDefault();
+
+              $.ajax({
+                headers: {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                 },
+                url: self.data('route'),
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                  _method: 'DELETE'
+                }
+              }).done(function() {
+
+                self.parents('tr').hide();
+
+                const toast = swal.mixin({
+                  toast: true,
+                  position: 'top-end',
+                  showConfirmButton: false,
+                  timer: 3000
+                });
+
+                toast({
+                  type: 'success',
+                  title: 'O registro foi removido com sucesso.'
+                })
+
+              });
+
+
+            }
+          });
+
+      });
+
+    </script>
+
 </body>
 </html>

@@ -20,10 +20,28 @@ Auth::routes();
 Route::middleware('auth')->group(function() {
 
   Route::get('/home', 'HomeController@index')->name('home');
+  Route::get('logo', 'UsersController@logo')->name('logo');
 
   Route::prefix('admin')->group(function() {
+
     Route::resource('companies', 'EmpresasController');
     Route::resource('users', 'UsersController');
+
+  });
+
+  Route::prefix('company')->group(function() {
+
+    Route::get('config/company', 'EmpresasController@configsEmpresa')->name('config_empresa');
+
+    Route::resource('clients', 'ClientesController');
+    Route::resource('vendors', 'FornecedoresController');
+    Route::resource('employees', 'FuncionariosController');
+    Route::resource('products', 'ProdutosController');
+    Route::resource('groups', 'GruposController');
+    Route::resource('extras', 'ExtrasController');
+
+    Route::resource('values', 'ValoresVendaController');
+
   });
 
 });

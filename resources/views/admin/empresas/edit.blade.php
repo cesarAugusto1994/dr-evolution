@@ -13,7 +13,7 @@
   <div class="col-md-12">
     <div class="box box-success">
       <div class="box-header with-border">
-        <h3 class="box-title">Nova Empresa</h3>
+        <h3 class="box-title">Editar Empresa</h3>
       </div>
       <div class="box-body">
 
@@ -28,6 +28,20 @@
               <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email" value="{{ $empresa->email }}" placeholder="Email">
+              </div>
+
+              <div class="form-group{{ $errors->has('tipo_pessoa_id') ? ' has-error' : '' }}">
+                <label for="tipo_pessoa_id">Tipo Pessoa</label>
+                <select class="form-control" id="tipo_pessoa_id" name="tipo_pessoa_id" placeholder="Tipo Pessoa">
+                  @foreach(\App\Models\Pessoa\Tipo::all() as $item)
+                      <option value="{{ $item->id }}" {{ $empresa->tipo->id == $item->id ? 'selected' : '' }}>{{ $item->nome }}</option>
+                  @endforeach
+                </select>
+                @if ($errors->has('tipo_pessoa_id'))
+    							<span class="help-block">
+    								<strong>{{ $errors->first('tipo_pessoa_id') }}</strong>
+    							</span>
+    						@endif
               </div>
 
               <div class="form-group">

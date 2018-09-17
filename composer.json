@@ -8,6 +8,7 @@
         "php": ">=7.0.0",
         "emadadly/laravel-uuid": "^1.2",
         "fideloper/proxy": "~3.3",
+        "intervention/image": "^2.4",
         "jeremykenedy/laravel-roles": "^1.2",
         "jeroennoten/laravel-adminlte": "^1.23",
         "laracasts/flash": "^3.0",

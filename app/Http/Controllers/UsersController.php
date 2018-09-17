@@ -70,10 +70,10 @@ class UsersController extends Controller
         } elseif($data['role_id'] == 2) {
           $userRole = Role::where('name', '=', 'User')->first();
         } elseif($data['role_id'] == 3) {
-          $userRole = Role::where('name', '=', 'Unverified')->first();
+          $userRole = Role::where('name', '=', 'User Lite')->first();
         }
 
-        $user->detachAllRoles();
+        //$user->detachAllRoles();
         $user->attachRole($userRole);
 
         flash('Usuário adicionado com sucesso!')->success()->important();
@@ -151,6 +151,7 @@ class UsersController extends Controller
 
         $user->detachAllRoles();
         $user->attachRole($userRole);
+
         $user->update($data);
 
         flash('Usuário atualizado com sucesso!')->success()->important();
@@ -189,5 +190,20 @@ class UsersController extends Controller
               'message' => $e->getMessage()
             ]);
         }
+    }
+
+    public function logo(Request $request)
+    {
+      if(!$request->has('logo')) {
+        return false;
+      }
+
+      $logo = $request->get('logo');
+
+      $file = \Storage::disk('local')->get($logo);
+
+      return \Image::make($file)->resize(64, 64)->response('jpg');
+
+      return response($image, 200)->header('Content-Type', 'image/jpeg');
     }
 }

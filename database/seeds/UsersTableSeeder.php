@@ -15,11 +15,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-
-
         $userRole 			= Role::where('name', '=', 'User')->first();
         $adminRole 			= Role::where('name', '=', 'Admin')->first();
-		$permissions 		= Permission::all();
+		    $permissions 		= Permission::all();
 
 	    /**
 	     * Add Users
@@ -27,29 +25,28 @@ class UsersTableSeeder extends Seeder
 	     */
         if (User::where('email', '=', 'admin@admin.com')->first() === null) {
 
-	        $newUser = User::create([
+	        $admin = User::create([
 	            'name' => 'Admin',
 	            'email' => 'admin@admin.com',
 	            'password' => bcrypt('password'),
 	        ]);
 
-	        $newUser->attachRole($adminRole);
+	        $admin->attachRole($adminRole);
 			foreach ($permissions as $permission) {
-				$newUser->attachPermission($permission);
+				$admin->attachPermission($permission);
 			}
 
         }
 
         if (User::where('email', '=', 'user@user.com')->first() === null) {
 
-	        $newUser = User::create([
+	        $user = User::create([
 	            'name' => 'User',
 	            'email' => 'user@user.com',
 	            'password' => bcrypt('password'),
 	        ]);
 
-	        $newUser;
-	        $newUser->attachRole($userRole);
+	        $user->attachRole($userRole);
 
         }
 

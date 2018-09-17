@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Empresa;
+use App\User;
+use jeremykenedy\LaravelRoles\Models\Role;
 
 class EmpresasController extends Controller
 {
@@ -42,6 +44,7 @@ class EmpresasController extends Controller
         $validator = Validator::make($data, [
             'nome' => 'required|string|max:255|unique:empresas',
             'email' => 'required|string|email|max:255|unique:empresas',
+            'password' => 'required|string|min:6|confirmed',
         ]);
 
         if($validator->fails()) {
@@ -54,7 +57,15 @@ class EmpresasController extends Controller
 
         $data['ativo'] = !empty($data['ativo']) ? (boolean)$data['ativo'] : false;
 
-        Empresa::create($data);
+        $empresa = Empresa::create($data);
+
+        $data['name'] = 'Admin '. $empresa->nome;
+        $data['empresa_id'] = $empresa->id;
+        $data['password'] = bcrypt($data['password']);
+        $user = User::create($data);
+
+        $userRole = Role::where('name', '=', 'User')->first();
+        $user->attachRole($userRole);
 
         flash('Empresa adicionada com sucesso!')->success()->important();
 
@@ -112,10 +123,13 @@ class EmpresasController extends Controller
 
         $data['ativo'] = !empty($data['ativo']) ? (boolean)$data['ativo'] : false;
 
-
         $empresa->update($data);
 
-        flash('Empresa atualizada com sucesso!')->success()->important();
+        flash('Os dados da Empresa foram atualizados com sucesso!')->success()->important();
+
+        if($request->has('return')) {
+          return redirect($request->get('return'));
+        }
 
         return redirect()->route('companies.index');
     }
@@ -144,4 +158,14 @@ class EmpresasController extends Controller
             ]);
         }
     }
+
+    public function configsEmpresa(Request $request)
+    {
+        $user = $request->user();
+
+        $empresa = $user->empresa;
+
+        return view('user.empresa.edit', compact('empresa'));
+    }
+
 }

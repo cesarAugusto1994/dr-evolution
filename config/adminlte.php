@@ -108,7 +108,7 @@ return [
     */
 
     'menu' => [
-        'MAIN NAVIGATION',
+        'Navegação Principal',
         [
             'text' => 'Blog',
             'url'  => 'admin/blog',
@@ -118,15 +118,87 @@ return [
             'text'        => 'Empresas',
             'url'         => 'admin/companies',
             'icon'        => 'building',
-            /*'can'         => 'manage-empresas'*/
+            'can'         => 'manage-empresas'
         ],
+
         [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'    => 'Configurações',
+            'url'     => '#',
+            'icon'        => 'cogs',
+            'can'         => 'manage-empresa',
+            'submenu' => [
+                [
+                    'text' => 'Empresa',
+                    'url'  => 'company/config/company',
+                    'icon'        => 'building',
+                ],
+            ],
         ],
+
+        [
+            'text'    => 'Cadastros',
+            'url'     => '#',
+            'icon'        => 'address-card-o',
+            'can'         => 'manage-cadastros',
+            'submenu' => [
+                [
+                    'text' => 'Clientes',
+                    'url'  => 'company/clients',
+                    'icon' => 'users',
+                ],
+                [
+                    'text' => 'Fornecedores',
+                    'url'  => 'company/vendors',
+                    'icon' => 'address-book',
+                ],
+                [
+                    'text' => 'Funcionários',
+                    'url'  => 'company/employees',
+                    'icon' => 'address-card',
+                ],
+            ],
+        ],
+
+        [
+            'text'    => 'Produtos',
+            'url'     => '#',
+            'icon'        => 'archive',
+            'can'         => 'manage-produtos',
+            'submenu' => [
+                [
+                    'text' => 'Gerenciar',
+                    'url'  => 'company/products',
+                    'icon' => 'users',
+                ],
+                [
+                    'text' => 'Valores Venda',
+                    'url'  => 'company/values',
+                    'icon' => 'money',
+                ],
+                [
+                    'text' => 'Cadastros Auxiliáres',
+                    'url'  => 'company/',
+                    'icon' => 'address-card',
+                    'submenu' => [
+                      [
+                          'text' => 'Grupos',
+                          'url'  => 'company/groups',
+                          'icon' => 'users',
+                      ],
+                      [
+                          'text' => 'Campos Extras',
+                          'url'  => 'company/extras',
+                          'icon' => 'file-o',
+                      ],
+
+
+                    ]
+                ],
+            ],
+        ],
+
+        /*
+
         'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',
@@ -189,6 +261,7 @@ return [
             'text'       => 'Information',
             'icon_color' => 'aqua',
         ],
+        */
     ],
 
     /*

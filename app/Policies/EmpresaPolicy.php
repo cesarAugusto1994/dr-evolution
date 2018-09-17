@@ -10,6 +10,26 @@ class EmpresaPolicy
 {
     use HandlesAuthorization;
 
+    public function index(User $user)
+    {
+        return (boolean)$user->hasRole('admin');
+    }
+
+    public function userIndex(User $user)
+    {
+        return (boolean)$user->hasRole('user');
+    }
+
+    public function userCadastros(User $user)
+    {
+        return (boolean)$user->hasRole('user');
+    }
+
+    public function userProdutos(User $user)
+    {
+        return (boolean)$user->hasRole('user');
+    }
+
     /**
      * Determine whether the user can view the empresa.
      *
@@ -19,7 +39,7 @@ class EmpresaPolicy
      */
     public function view(User $user, Empresa $empresa)
     {
-        //
+        return $user->hasRole('Admin');
     }
 
     /**
@@ -30,7 +50,7 @@ class EmpresaPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->hasRole('Admin');
     }
 
     /**
@@ -42,7 +62,7 @@ class EmpresaPolicy
      */
     public function update(User $user, Empresa $empresa)
     {
-        //
+        return $user->hasRole('Admin');
     }
 
     /**
@@ -54,6 +74,6 @@ class EmpresaPolicy
      */
     public function delete(User $user, Empresa $empresa)
     {
-        //
+        return $user->hasRole('Admin');
     }
 }

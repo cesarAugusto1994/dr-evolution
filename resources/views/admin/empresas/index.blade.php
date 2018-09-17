@@ -43,10 +43,10 @@
                   <th>#</th>
                   <th>Nome</th>
                   <th>Email</th>
+                  <th>Tipo</th>
                   <th>Logo</th>
                   <th>NIF</th>
                   <th>Cidade</th>
-                  <th>Endereço</th>
                   <th>Telefone</th>
                   <th>Celular</th>
                   <th>Ativo</th>
@@ -60,23 +60,23 @@
                     <td># {{ $empresa->id }}</td>
                     <td>{{ $empresa->nome }}</td>
                     <td>{{ $empresa->email }}</td>
-                    <td><img class="img" alt="" src="asset({{ $empresa->logo }})"></td>
+                    <td>{{ $empresa->tipo->nome }}</td>
+                    <td><img class="img" alt="" src="{{ route('logo', ['logo' => $empresa->logo]) }}"></td>
                     <td>{{ $empresa->nif }}</td>
                     <td>{{ $empresa->cidade }}</td>
-                    <td>{{ $empresa->endereco }}</td>
                     <td>{{ $empresa->telefone }}</td>
                     <td>{{ $empresa->celular }}</td>
                     <td><span class="badge {{ $empresa->ativo ? 'bg-teal' : 'bg-red' }} ">{{ $empresa->ativo ? 'Ativo' : 'Inativo' }}</span></td>
                     <td>{{ $empresa->created_at }}</td>
                     <td>
-                      <a href="{{ route('users.index', ['empresa' => $empresa->id]) }}" title="Usuários"><i class="fa fa-users"></i></a>
-                      <a href="{{ route('companies.edit', $empresa->id) }}"><i class="fa fa-edit"></i></a>
-                      <a class="btnRemoveItem" data-route="{{ route('companies.destroy', $empresa->id) }}"><i class="fa fa-trash"></i></a>
+                      <a class="btn btn-warning" href="{{ route('users.index', ['empresa' => $empresa->id]) }}" title="Usuários"><i class="fa fa-users"></i></a>
+                      <a class="btn btn-primary" href="{{ route('companies.edit', $empresa->id) }}"><i class="fa fa-edit"></i></a>
+                      <a class="btn btn-danger btnRemoveItem" data-route="{{ route('companies.destroy', $empresa->id) }}"><i class="fa fa-trash"></i></a>
                     </td>
                   </tr>
                 @empty
                   <tr>
-                    <td colspan="11" class="text-center">Nenhuma Empresa cadastrarda até o momento!</td>
+                    <td colspan="13" class="text-center">Nenhuma Empresa cadastrarda até o momento!</td>
                   </tr>
                 @endforelse
               </tbody>

@@ -26,6 +26,16 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        //Gate::resource('manage-empresas', 'App\Policies\EmpresaPolicy');
+
+        Gate::define('manage-empresas', 'App\Policies\EmpresaPolicy@index');
+        Gate::define('manage-empresa', 'App\Policies\EmpresaPolicy@userIndex');
+        Gate::define('manage-cadastros', 'App\Policies\EmpresaPolicy@userCadastros');
+        Gate::define('manage-produtos', 'App\Policies\EmpresaPolicy@userProdutos');
+
+
+
+
+
     }
 }
