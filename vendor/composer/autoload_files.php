@@ -16,5 +16,8 @@ return array(
     '801c31d8ed748cfa537fa45402288c95' => $vendorDir . '/psy/psysh/src/functions.php',
     '6124b4c8570aa390c21fafd04a26c69f' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
     'a0edc8309cc5e1d60e3047b5df6b7052' => $vendorDir . '/guzzlehttp/psr7/src/functions_include.php',
+    '298946589c8e980580c22399a4f81c53' => $vendorDir . '/okipa/laravel-html-helper/app/Helpers/HtmlHelper.php',
+    'f18cc91337d49233e5754e93f3ed9ec3' => $vendorDir . '/laravelcollective/html/src/helpers.php',
     'e23faeee409e941dc9b4c80386209c39' => $vendorDir . '/laracasts/flash/src/Laracasts/Flash/functions.php',
+    'd9fc00ffac3dc4b7868e8efb0efdc85c' => $vendorDir . '/kris/laravel-form-builder/src/helpers.php',
 );

@@ -11,9 +11,11 @@
         "intervention/image": "^2.4",
         "jeremykenedy/laravel-roles": "^1.2",
         "jeroennoten/laravel-adminlte": "^1.23",
+        "kris/laravel-form-builder": "^1.15",
         "laracasts/flash": "^3.0",
         "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "okipa/laravel-bootstrap-table-list": "^2.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

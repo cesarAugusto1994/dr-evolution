@@ -17,7 +17,10 @@ class ComposerStaticInite6320667c0b8c7d6d47fab06c71eb01c
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        '298946589c8e980580c22399a4f81c53' => __DIR__ . '/..' . '/okipa/laravel-html-helper/app/Helpers/HtmlHelper.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         'e23faeee409e941dc9b4c80386209c39' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/functions.php',
+        'd9fc00ffac3dc4b7868e8efb0efdc85c' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -74,6 +77,11 @@ class ComposerStaticInite6320667c0b8c7d6d47fab06c71eb01c
             'Psr\\Container\\' => 14,
             'PhpParser\\' => 10,
         ),
+        'O' => 
+        array (
+            'Okipa\\LaravelHtmlHelper\\' => 24,
+            'Okipa\\LaravelBootstrapTableList\\' => 32,
+        ),
         'M' => 
         array (
             'Monolog\\' => 8,
@@ -116,6 +124,7 @@ class ComposerStaticInite6320667c0b8c7d6d47fab06c71eb01c
         'C' => 
         array (
             'Cron\\' => 5,
+            'Collective\\Html\\' => 16,
         ),
         'A' => 
         array (
@@ -242,6 +251,14 @@ class ComposerStaticInite6320667c0b8c7d6d47fab06c71eb01c
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
+        'Okipa\\LaravelHtmlHelper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/okipa/laravel-html-helper/src',
+        ),
+        'Okipa\\LaravelBootstrapTableList\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/okipa/laravel-bootstrap-table-list/src',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -306,6 +323,10 @@ class ComposerStaticInite6320667c0b8c7d6d47fab06c71eb01c
         array (
             0 => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron',
         ),
+        'Collective\\Html\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravelcollective/html/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -342,6 +363,13 @@ class ComposerStaticInite6320667c0b8c7d6d47fab06c71eb01c
                 0 => __DIR__ . '/..' . '/laracasts/flash/src',
             ),
         ),
+        'K' => 
+        array (
+            'Kris\\LaravelFormBuilder' => 
+            array (
+                0 => __DIR__ . '/..' . '/kris/laravel-form-builder/src',
+            ),
+        ),
         'J' => 
         array (
             'JakubOnderka\\PhpConsoleHighlighter' => 
@@ -372,10 +400,14 @@ class ComposerStaticInite6320667c0b8c7d6d47fab06c71eb01c
         'App\\Http\\Controllers\\ClientesController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClientesController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\EmpresasController' => __DIR__ . '/../..' . '/app/Http/Controllers/EmpresasController.php',
+        'App\\Http\\Controllers\\ExtrasController' => __DIR__ . '/../..' . '/app/Http/Controllers/ExtrasController.php',
         'App\\Http\\Controllers\\FornecedoresController' => __DIR__ . '/../..' . '/app/Http/Controllers/FornecedoresController.php',
         'App\\Http\\Controllers\\FuncionariosController' => __DIR__ . '/../..' . '/app/Http/Controllers/FuncionariosController.php',
+        'App\\Http\\Controllers\\GruposController' => __DIR__ . '/../..' . '/app/Http/Controllers/GruposController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\ProdutosController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProdutosController.php',
         'App\\Http\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersController.php',
+        'App\\Http\\Controllers\\ValoresVendaController' => __DIR__ . '/../..' . '/app/Http/Controllers/ValoresVendaController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
@@ -384,6 +416,7 @@ class ComposerStaticInite6320667c0b8c7d6d47fab06c71eb01c
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Cliente' => __DIR__ . '/../..' . '/app/Models/Cliente.php',
         'App\\Models\\Empresa' => __DIR__ . '/../..' . '/app/Models/Empresa.php',
+        'App\\Models\\Extra' => __DIR__ . '/../..' . '/app/Models/Extra.php',
         'App\\Models\\Fornecedor' => __DIR__ . '/../..' . '/app/Models/Fornecedor.php',
         'App\\Models\\Funcionario' => __DIR__ . '/../..' . '/app/Models/Funcionario.php',
         'App\\Models\\Pessoa\\Tipo' => __DIR__ . '/../..' . '/app/Models/Pessoa/Tipo.php',
@@ -392,6 +425,7 @@ class ComposerStaticInite6320667c0b8c7d6d47fab06c71eb01c
         'App\\Models\\Produto\\Grupo' => __DIR__ . '/../..' . '/app/Models/Produto/Grupo.php',
         'App\\Models\\Produto\\Particularidade' => __DIR__ . '/../..' . '/app/Models/Produto/Particularidade.php',
         'App\\Models\\Produto\\Unidade' => __DIR__ . '/../..' . '/app/Models/Produto/Unidade.php',
+        'App\\Models\\Produto\\ValorVenda' => __DIR__ . '/../..' . '/app/Models/Produto/ValorVenda.php',
         'App\\Models\\Transportadora' => __DIR__ . '/../..' . '/app/Models/Transportadora.php',
         'App\\Policies\\EmpresaPolicy' => __DIR__ . '/../..' . '/app/Policies/EmpresaPolicy.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
@@ -408,6 +442,13 @@ class ComposerStaticInite6320667c0b8c7d6d47fab06c71eb01c
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
         'Carbon\\Laravel\\ServiceProvider' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Laravel/ServiceProvider.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'Collective\\Html\\Componentable' => __DIR__ . '/..' . '/laravelcollective/html/src/Componentable.php',
+        'Collective\\Html\\Eloquent\\FormAccessible' => __DIR__ . '/..' . '/laravelcollective/html/src/Eloquent/FormAccessible.php',
+        'Collective\\Html\\FormBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/FormBuilder.php',
+        'Collective\\Html\\FormFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/FormFacade.php',
+        'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
+        'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
+        'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
         'ConnectRelationshipsSeeder' => __DIR__ . '/../..' . '/database/seeds/ConnectRelationshipsSeeder.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/CronExpression.php',
@@ -974,6 +1015,7 @@ class ComposerStaticInite6320667c0b8c7d6d47fab06c71eb01c
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
+        'FormBuilderTestCase' => __DIR__ . '/..' . '/kris/laravel-form-builder/tests/FormBuilderTestCase.php',
         'GuzzleHttp\\Psr7\\AppendStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/AppendStream.php',
         'GuzzleHttp\\Psr7\\BufferStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/BufferStream.php',
         'GuzzleHttp\\Psr7\\CachingStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/CachingStream.php',
@@ -1977,6 +2019,49 @@ class ComposerStaticInite6320667c0b8c7d6d47fab06c71eb01c
         'JeroenNoten\\LaravelAdminLte\\Menu\\Filters\\SubmenuFilter' => __DIR__ . '/..' . '/jeroennoten/laravel-adminlte/src/Menu/Filters/SubmenuFilter.php',
         'JeroenNoten\\LaravelAdminLte\\ServiceProvider' => __DIR__ . '/..' . '/jeroennoten/laravel-adminlte/src/ServiceProvider.php',
         'JsonSerializable' => __DIR__ . '/..' . '/nesbot/carbon/src/JsonSerializable.php',
+        'Kris\\LaravelFormBuilder\\Console\\FormGenerator' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Console/FormGenerator.php',
+        'Kris\\LaravelFormBuilder\\Console\\FormMakeCommand' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Console/FormMakeCommand.php',
+        'Kris\\LaravelFormBuilder\\Events\\AfterFieldCreation' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Events/AfterFieldCreation.php',
+        'Kris\\LaravelFormBuilder\\Events\\AfterFormCreation' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Events/AfterFormCreation.php',
+        'Kris\\LaravelFormBuilder\\Events\\AfterFormValidation' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Events/AfterFormValidation.php',
+        'Kris\\LaravelFormBuilder\\Events\\BeforeFormValidation' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Events/BeforeFormValidation.php',
+        'Kris\\LaravelFormBuilder\\Facades\\FormBuilder' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Facades/FormBuilder.php',
+        'Kris\\LaravelFormBuilder\\Fields\\ButtonGroupType' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Fields/ButtonGroupType.php',
+        'Kris\\LaravelFormBuilder\\Fields\\ButtonType' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Fields/ButtonType.php',
+        'Kris\\LaravelFormBuilder\\Fields\\CheckableType' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Fields/CheckableType.php',
+        'Kris\\LaravelFormBuilder\\Fields\\ChildFormType' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Fields/ChildFormType.php',
+        'Kris\\LaravelFormBuilder\\Fields\\ChoiceType' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Fields/ChoiceType.php',
+        'Kris\\LaravelFormBuilder\\Fields\\CollectionType' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Fields/CollectionType.php',
+        'Kris\\LaravelFormBuilder\\Fields\\EntityType' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Fields/EntityType.php',
+        'Kris\\LaravelFormBuilder\\Fields\\FormField' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Fields/FormField.php',
+        'Kris\\LaravelFormBuilder\\Fields\\InputType' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Fields/InputType.php',
+        'Kris\\LaravelFormBuilder\\Fields\\ParentType' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Fields/ParentType.php',
+        'Kris\\LaravelFormBuilder\\Fields\\RepeatedType' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Fields/RepeatedType.php',
+        'Kris\\LaravelFormBuilder\\Fields\\SelectType' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Fields/SelectType.php',
+        'Kris\\LaravelFormBuilder\\Fields\\StaticType' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Fields/StaticType.php',
+        'Kris\\LaravelFormBuilder\\Fields\\TextareaType' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Fields/TextareaType.php',
+        'Kris\\LaravelFormBuilder\\Filters\\Collection\\BaseName' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Filters/Collection/BaseName.php',
+        'Kris\\LaravelFormBuilder\\Filters\\Collection\\HtmlEntities' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Filters/Collection/HtmlEntities.php',
+        'Kris\\LaravelFormBuilder\\Filters\\Collection\\Integer' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Filters/Collection/Integer.php',
+        'Kris\\LaravelFormBuilder\\Filters\\Collection\\Lowercase' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Filters/Collection/Lowercase.php',
+        'Kris\\LaravelFormBuilder\\Filters\\Collection\\PregReplace' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Filters/Collection/PregReplace.php',
+        'Kris\\LaravelFormBuilder\\Filters\\Collection\\StripNewlines' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Filters/Collection/StripNewlines.php',
+        'Kris\\LaravelFormBuilder\\Filters\\Collection\\StripTags' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Filters/Collection/StripTags.php',
+        'Kris\\LaravelFormBuilder\\Filters\\Collection\\Trim' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Filters/Collection/Trim.php',
+        'Kris\\LaravelFormBuilder\\Filters\\Collection\\Uppercase' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Filters/Collection/Uppercase.php',
+        'Kris\\LaravelFormBuilder\\Filters\\Collection\\XSS' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Filters/Collection/XSS.php',
+        'Kris\\LaravelFormBuilder\\Filters\\Exception\\FilterAlreadyBindedException' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Filters/Exception/FilterAlreadyBindedException.php',
+        'Kris\\LaravelFormBuilder\\Filters\\Exception\\InvalidInstanceException' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Filters/Exception/InvalidInstanceException.php',
+        'Kris\\LaravelFormBuilder\\Filters\\Exception\\UnableToResolveFilterException' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Filters/Exception/UnableToResolveFilterException.php',
+        'Kris\\LaravelFormBuilder\\Filters\\FilterInterface' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Filters/FilterInterface.php',
+        'Kris\\LaravelFormBuilder\\Filters\\FilterResolver' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Filters/FilterResolver.php',
+        'Kris\\LaravelFormBuilder\\Form' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Form.php',
+        'Kris\\LaravelFormBuilder\\FormBuilder' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/FormBuilder.php',
+        'Kris\\LaravelFormBuilder\\FormBuilderServiceProvider' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/FormBuilderServiceProvider.php',
+        'Kris\\LaravelFormBuilder\\FormBuilderTrait' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/FormBuilderTrait.php',
+        'Kris\\LaravelFormBuilder\\FormHelper' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/FormHelper.php',
+        'Kris\\LaravelFormBuilder\\RulesParser' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/RulesParser.php',
+        'Kris\\LaravelFormBuilder\\Traits\\ValidatesWhenResolved' => __DIR__ . '/..' . '/kris/laravel-form-builder/src/Kris/LaravelFormBuilder/Traits/ValidatesWhenResolved.php',
         'Laracasts\\Flash\\Flash' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/Flash.php',
         'Laracasts\\Flash\\FlashNotifier' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/FlashNotifier.php',
         'Laracasts\\Flash\\FlashServiceProvider' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/FlashServiceProvider.php',
@@ -2201,6 +2286,15 @@ class ComposerStaticInite6320667c0b8c7d6d47fab06c71eb01c
         'Monolog\\Processor\\UidProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/UidProcessor.php',
         'Monolog\\Processor\\WebProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/WebProcessor.php',
         'Monolog\\Registry' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Registry.php',
+        'Okipa\\LaravelBootstrapTableList\\TableList' => __DIR__ . '/..' . '/okipa/laravel-bootstrap-table-list/src/TableList.php',
+        'Okipa\\LaravelBootstrapTableList\\TableListColumn' => __DIR__ . '/..' . '/okipa/laravel-bootstrap-table-list/src/TableListColumn.php',
+        'Okipa\\LaravelBootstrapTableList\\TableListServiceProvider' => __DIR__ . '/..' . '/okipa/laravel-bootstrap-table-list/src/TableListServiceProvider.php',
+        'Okipa\\LaravelBootstrapTableList\\Traits\\ColumnsValidationChecks' => __DIR__ . '/..' . '/okipa/laravel-bootstrap-table-list/src/Traits/ColumnsValidationChecks.php',
+        'Okipa\\LaravelBootstrapTableList\\Traits\\RoutesValidationChecks' => __DIR__ . '/..' . '/okipa/laravel-bootstrap-table-list/src/Traits/RoutesValidationChecks.php',
+        'Okipa\\LaravelHtmlHelper\\HtmlAttributes' => __DIR__ . '/..' . '/okipa/laravel-html-helper/src/HtmlAttributes.php',
+        'Okipa\\LaravelHtmlHelper\\HtmlClassTag' => __DIR__ . '/..' . '/okipa/laravel-html-helper/src/HtmlClassTag.php',
+        'Okipa\\LaravelHtmlHelper\\HtmlHelper' => __DIR__ . '/..' . '/okipa/laravel-html-helper/src/HtmlHelper.php',
+        'Okipa\\LaravelHtmlHelper\\HtmlHelperServiceProvider' => __DIR__ . '/..' . '/okipa/laravel-html-helper/src/HtmlHelperServiceProvider.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/AssertionFailedError.php',
@@ -3805,6 +3899,7 @@ class ComposerStaticInite6320667c0b8c7d6d47fab06c71eb01c
         'Symfony\\Polyfill\\Php70\\Php70' => __DIR__ . '/..' . '/symfony/polyfill-php70/Php70.php',
         'Symfony\\Thanks\\Command\\ThanksCommand' => __DIR__ . '/..' . '/symfony/thanks/src/Command/ThanksCommand.php',
         'Symfony\\Thanks\\Thanks' => __DIR__ . '/..' . '/symfony/thanks/src/Thanks.php',
+        'TestModel' => __DIR__ . '/..' . '/kris/laravel-form-builder/tests/FormBuilderTestCase.php',
         'Tests\\CreatesApplication' => __DIR__ . '/../..' . '/tests/CreatesApplication.php',
         'Tests\\Feature\\ExampleTest' => __DIR__ . '/../..' . '/tests/Feature/ExampleTest.php',
         'Tests\\TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',

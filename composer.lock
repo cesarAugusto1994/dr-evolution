@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cbf36c49aa7bec374744d3bc5b797b8d",
-    "content-hash": "ecf8342bab119e0db17a3194a5033049",
+    "hash": "618fa143726e6d3ad0644abb23414b5e",
+    "content-hash": "f3b778fce156d8d9132493c4c7873672",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -715,6 +715,68 @@
             "time": "2018-07-22 14:15:15"
         },
         {
+            "name": "kris/laravel-form-builder",
+            "version": "1.15.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kristijanhusak/laravel-form-builder.git",
+                "reference": "5bb1766e90151b67e8c0a07a3492781ed801caf8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kristijanhusak/laravel-form-builder/zipball/5bb1766e90151b67e8c0a07a3492781ed801caf8",
+                "reference": "5bb1766e90151b67e8c0a07a3492781ed801caf8",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.*@dev",
+                "illuminate/validation": "5.*@dev",
+                "laravelcollective/html": "5.*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.4",
+                "phpunit/phpunit": "~5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.16.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Kris\\LaravelFormBuilder\\FormBuilderServiceProvider"
+                    ],
+                    "aliases": {
+                        "FormBuilder": "Kris\\LaravelFormBuilder\\Facades\\FormBuilder"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Kris\\LaravelFormBuilder": "src/"
+                },
+                "classmap": [
+                    "tests/FormBuilderTestCase.php"
+                ],
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kristijan Husak",
+                    "email": "husakkristijan@gmail.com"
+                }
+            ],
+            "description": "Laravel form builder - symfony like",
+            "time": "2018-07-11 10:44:40"
+        },
+        {
             "name": "laracasts/flash",
             "version": "3.0.2",
             "source": {
@@ -964,6 +1026,74 @@
                 "psysh"
             ],
             "time": "2018-05-17 13:42:07"
+        },
+        {
+            "name": "laravelcollective/html",
+            "version": "v5.5.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "04c596a69975b901f2223eb6eb4adf55354121c2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/04c596a69975b901f2223eb6eb4adf55354121c2",
+                "reference": "04c596a69975b901f2223eb6eb4adf55354121c2",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "5.5.*",
+                "illuminate/routing": "5.5.*",
+                "illuminate/session": "5.5.*",
+                "illuminate/support": "5.5.*",
+                "illuminate/view": "5.5.*",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "illuminate/database": "5.5.*",
+                "mockery/mockery": "~0.9.4",
+                "phpunit/phpunit": "~5.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.5-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Collective\\Html\\HtmlServiceProvider"
+                    ],
+                    "aliases": {
+                        "Form": "Collective\\Html\\FormFacade",
+                        "Html": "Collective\\Html\\HtmlFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                },
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                }
+            ],
+            "description": "HTML and Form Builders for the Laravel Framework",
+            "homepage": "https://laravelcollective.com",
+            "time": "2018-03-24 00:39:21"
         },
         {
             "name": "league/flysystem",
@@ -1276,6 +1406,126 @@
                 "php"
             ],
             "time": "2018-07-15 17:25:16"
+        },
+        {
+            "name": "okipa/laravel-bootstrap-table-list",
+            "version": "2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Okipa/laravel-bootstrap-table-list.git",
+                "reference": "b8101962138bc0f8f015e51af32a027a8ae5b207"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Okipa/laravel-bootstrap-table-list/zipball/b8101962138bc0f8f015e51af32a027a8ae5b207",
+                "reference": "b8101962138bc0f8f015e51af32a027a8ae5b207",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "okipa/laravel-html-helper": "^1.0",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.6"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Okipa\\LaravelBootstrapTableList\\TableListServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Okipa\\LaravelBootstrapTableList\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arthur LORENT",
+                    "email": "arthur.lorent@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Bootstrap table list generator for Laravel.",
+            "homepage": "https://github.com/Okipa/laravel-bootstrap-table-list",
+            "keywords": [
+                "bootstrap",
+                "entities",
+                "generate",
+                "generation",
+                "generator",
+                "html",
+                "laravel",
+                "list",
+                "okipa",
+                "package",
+                "php",
+                "table"
+            ],
+            "time": "2018-08-24 14:45:06"
+        },
+        {
+            "name": "okipa/laravel-html-helper",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Okipa/laravel-html-helper.git",
+                "reference": "832bbb1e07e83d2f67646ac0e3f628f0f42fc57e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Okipa/laravel-html-helper/zipball/832bbb1e07e83d2f67646ac0e3f628f0f42fc57e",
+                "reference": "832bbb1e07e83d2f67646ac0e3f628f0f42fc57e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Okipa\\LaravelHtmlHelper\\": "src/"
+                },
+                "files": [
+                    "app/Helpers/HtmlHelper.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arthur LORENT",
+                    "email": "arthur.lorent@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Some usefull methods to generate clean HTML with Laravel.",
+            "homepage": "https://github.com/Okipa/laravel-html-helper",
+            "keywords": [
+                "generate",
+                "generation",
+                "generator",
+                "helper",
+                "html",
+                "laravel",
+                "okipa",
+                "package",
+                "php"
+            ],
+            "time": "2018-06-09 21:16:32"
         },
         {
             "name": "paragonie/random_compat",
