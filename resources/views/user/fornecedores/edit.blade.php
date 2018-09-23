@@ -1,21 +1,12 @@
-@extends('adminlte::page')
+@extends('dashboard.templates.edit')
 
-@section('title', 'Fornecedores')
-
-@section('content_header')
-    <h1>Fornecedores</h1>
-@stop
+@section('title', 'Editar Fornecedor')
 
 @section('content')
 
 <div class="row">
-
-  <div class="col-md-12">
-    <div class="box box-success">
-      <div class="box-header with-border">
-        <h3 class="box-title">Editar Fornecedor</h3>
-      </div>
-      <div class="box-body">
+    <div class="col-sm-12">
+        <div class="card-box">
 
         <form role="form" method="post" action="{{ route('vendors.update', $fornecedor->uuid) }}" enctype="multipart/form-data">
             {{ csrf_field() }}
@@ -94,7 +85,7 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="avatar">Logo</label>
-                    <input type="file" id="avatar" name="avatar"/>
+                    <input type="file" class="form-control filestyle" data-size="md" data-buttontext="Selecione um comprovante" data-buttonname="btn-default" id="avatar" name="avatar"/>
                   </div>
                 </div>
 
@@ -114,10 +105,8 @@
             </div>
           </form>
 
-      </div>
+        </div>
     </div>
-  </div>
-
 </div>
 
 @stop

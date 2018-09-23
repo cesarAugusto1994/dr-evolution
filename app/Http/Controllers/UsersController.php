@@ -206,4 +206,34 @@ class UsersController extends Controller
 
       return response($image, 200)->header('Content-Type', 'image/jpeg');
     }
+
+    public function avatar(Request $request)
+    {
+        $user = \Auth::user();
+
+        if($request->has('email')) {
+          $user = User::where('email', $request->get('email'))->get()->first();
+        }
+
+        if($user->avatar_tipo == 'social') {
+
+          $file = file_get_contents($user->social_avatar);
+          return response($file, 200)->header('Content-Type', 'image/jpeg');
+
+        } elseif($user->avatar_tipo == 'upload') {
+
+          $file = \Storage::disk('local')->get($user->avatar);
+          return response($file, 200)->header('Content-Type', 'image/jpeg');
+
+        } elseif($user->avatar_tipo == 'words') {
+
+          $file = file_get_contents(\Avatar::create($user->name)->setDimension(300, 300)->setFontSize(85)->setShape('square')->setBorder(0, '#aabbcc')->toBase64());
+          return response($file, 200)->header('Content-Type', 'image/jpeg');
+
+        } else {
+
+          $file = file_get_contents(\Gravatar::get($user->email));
+          return response($file, 200)->header('Content-Type', 'image/png');
+        }
+    }
 }

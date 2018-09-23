@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Fornecedor;
 use Illuminate\Support\Facades\Validator;
+use Okipa\LaravelBootstrapTableList\TableList;
 
 class FornecedoresController extends Controller
 {
@@ -15,11 +16,44 @@ class FornecedoresController extends Controller
      */
     public function index()
     {
-        $user = \Auth::user();
+        $table = app(TableList::class)
+           ->setModel(Fornecedor::class)
+           ->setRoutes([
+               'index'      => ['alias' => 'vendors.index', 'parameters' => []],
+               'edit'       => ['alias' => 'vendors.edit', 'parameters' => []],
+               'destroy'    => ['alias' => 'vendors.destroy', 'parameters' => []],
+           ])
+           ->addQueryInstructions(function ($query) {
 
-        $fornecedores = Fornecedor::where('empresa_id', $user->empresa_id)->paginate();
+              $user = \Auth::user();
 
-        return view('user.fornecedores.index', compact('fornecedores'));
+              $query->select('fornecedores.*')
+                  ->where('fornecedores.empresa_id', $user->empresa_id);
+          });
+         // we add some columns to the table list
+         $table->addColumn('nome')
+           ->setTitle('Nome')
+           ->isSortable()
+           ->isSearchable()
+           ->useForDestroyConfirmation();
+         $table->addColumn('email')
+           ->setTitle('Email')
+           ->isSearchable()
+           ->useForDestroyConfirmation();
+         $table->addColumn('endereco')
+           ->setTitle('Endereço')
+           ->isSearchable()
+           ->useForDestroyConfirmation();
+         $table->addColumn('celular')
+           ->setTitle('Celular')
+           ->isSearchable()
+           ->useForDestroyConfirmation();
+         $table->addColumn('telefone')
+           ->setTitle('Telefone')
+           ->isSearchable()
+           ->useForDestroyConfirmation();;
+
+        return view('user.fornecedores.index', compact('table'));
     }
 
     /**
@@ -89,7 +123,7 @@ class FornecedoresController extends Controller
      */
     public function edit($id)
     {
-        $fornecedor = Fornecedor::uuid($id);
+        $fornecedor = Fornecedor::findOrFail($id);
         return view('user.fornecedores.edit', compact('fornecedor'));
     }
 
@@ -142,20 +176,11 @@ class FornecedoresController extends Controller
      */
     public function destroy($id)
     {
-        try {
-            $registro = Fornecedor::findOrFail($id);
-            $registro->delete();
+      $registro = Fornecedor::findOrFail($id);
+      $registro->delete();
 
-            return response()->json([
-              'code' => 201,
-              'message' => 'Removido com sucesso!'
-            ]);
+      flash('Removido com sucesso!')->success()->important();
 
-        } catch(Exception $e) {
-            return response()->json([
-              'code' => 501,
-              'message' => $e->getMessage()
-            ]);
-        }
+      return redirect()->route('vendors.index');
     }
 }

@@ -1,21 +1,12 @@
-@extends('adminlte::page')
+@extends('dashboard.templates.edit')
 
-@section('title', 'Clientes')
-
-@section('content_header')
-    <h1>Clientes</h1>
-@stop
+@section('title', 'Editar Cliente')
 
 @section('content')
 
 <div class="row">
-
-  <div class="col-md-12">
-    <div class="box box-success">
-      <div class="box-header with-border">
-        <h3 class="box-title">Editar Cliente</h3>
-      </div>
-      <div class="box-body">
+    <div class="col-sm-12">
+        <div class="card-box">
 
         <form role="form" method="post" action="{{ route('clients.update', $cliente->uuid) }}" enctype="multipart/form-data">
             {{ csrf_field() }}
@@ -94,10 +85,10 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="avatar">Logo</label>
-                    <input type="file" id="avatar" name="avatar"/>
+                    <input type="file" class="form-control filestyle" data-size="md" data-buttontext="Selecione um comprovante" data-buttonname="btn-default" id="avatar" name="avatar"/>
                   </div>
                 </div>
-                
+
                 <div class="col-md-4">
                   <div class="checkbox">
                     <label>
@@ -114,10 +105,8 @@
             </div>
           </form>
 
-      </div>
+        </div>
     </div>
-  </div>
-
 </div>
 
 @stop

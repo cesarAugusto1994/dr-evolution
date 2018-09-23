@@ -1,7 +1,8 @@
+<ul class="metismenu" id="side-menu">
 @if (is_string($item))
-    <li class="header">{{ $item }}</li>
+    <li class="menu-title">{{ $item }}</li>
 @else
-    <li class="{{ $item['class'] }}">
+    <li class="nav-second-level">
         <a href="{{ $item['href'] }}"
            @if (isset($item['target'])) target="{{ $item['target'] }}" @endif
         >
@@ -18,9 +19,10 @@
             @endif
         </a>
         @if (isset($item['submenu']))
-            <ul class="{{ $item['submenu_class'] }}">
+            <ul class="nav-third-level nav">
                 @each('adminlte::partials.menu-item', $item['submenu'], 'item')
             </ul>
         @endif
     </li>
 @endif
+</ul>

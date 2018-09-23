@@ -1,23 +1,14 @@
-@extends('adminlte::page')
+@extends('dashboard.templates.create')
 
 @section('title', 'Fornecedores')
-
-@section('content_header')
-    <h1>Fornecedores</h1>
-@stop
 
 @section('content')
 
 <div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
 
-  <div class="col-md-12">
-    <div class="box box-success">
-      <div class="box-header with-border">
-        <h3 class="box-title">Novo Fornecedor</h3>
-      </div>
-      <div class="box-body">
-
-        <form role="form" method="post" action="{{ route('vendors.store') }}" enctype="multipart/form-data">
+          <form role="form" method="post" action="{{ route('vendors.store') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="box-body">
 
@@ -157,7 +148,7 @@
 
                   <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
                     <label for="avatar">Logo</label>
-                    <input type="file" id="avatar" name="avatar"/>
+                    <input type="file" class="form-control filestyle" data-size="md" data-buttontext="Selecione um comprovante" data-buttonname="btn-default" id="avatar" name="avatar"/>
                     @if ($errors->has('avatar'))
         							<span class="help-block">
         								<strong>{{ $errors->first('avatar') }}</strong>
@@ -171,7 +162,7 @@
 
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" name="ativo" value="1"> Ativo
+                      <input type="checkbox" name="ativo" checked value="1"> Ativo
                     </label>
                   </div>
 
@@ -187,10 +178,8 @@
             </div>
           </form>
 
-      </div>
+        </div>
     </div>
-  </div>
-
 </div>
 
 @stop

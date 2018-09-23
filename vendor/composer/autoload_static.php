@@ -124,6 +124,7 @@ class ComposerStaticInite6320667c0b8c7d6d47fab06c71eb01c
         'C' => 
         array (
             'Cron\\' => 5,
+            'Creativeorange\\Gravatar\\' => 24,
             'Collective\\Html\\' => 16,
         ),
         'A' => 
@@ -323,6 +324,10 @@ class ComposerStaticInite6320667c0b8c7d6d47fab06c71eb01c
         array (
             0 => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron',
         ),
+        'Creativeorange\\Gravatar\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/creativeorange/gravatar/src',
+        ),
         'Collective\\Html\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravelcollective/html/src',
@@ -450,6 +455,10 @@ class ComposerStaticInite6320667c0b8c7d6d47fab06c71eb01c
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
         'ConnectRelationshipsSeeder' => __DIR__ . '/../..' . '/database/seeds/ConnectRelationshipsSeeder.php',
+        'Creativeorange\\Gravatar\\Exceptions\\InvalidEmailException' => __DIR__ . '/..' . '/creativeorange/gravatar/src/Exceptions/InvalidEmailException.php',
+        'Creativeorange\\Gravatar\\Facades\\Gravatar' => __DIR__ . '/..' . '/creativeorange/gravatar/src/Facades/Gravatar.php',
+        'Creativeorange\\Gravatar\\Gravatar' => __DIR__ . '/..' . '/creativeorange/gravatar/src/Gravatar.php',
+        'Creativeorange\\Gravatar\\GravatarServiceProvider' => __DIR__ . '/..' . '/creativeorange/gravatar/src/GravatarServiceProvider.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/DayOfMonthField.php',

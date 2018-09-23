@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Okipa\LaravelBootstrapTableList\TableList;
+use Kris\LaravelFormBuilder\FormBuilder;
 use App\Models\Cliente;
 
 class ClientesController extends Controller
@@ -15,11 +17,46 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        $user = \Auth::user();
 
-        $clientes = Cliente::where('empresa_id', $user->empresa_id)->paginate();
+        $table = app(TableList::class)
+           ->setModel(Cliente::class)
+           ->setRoutes([
+               'index'      => ['alias' => 'clients.index', 'parameters' => []],
+               'edit'       => ['alias' => 'clients.edit', 'parameters' => []],
+               'destroy'    => ['alias' => 'clients.destroy', 'parameters' => []],
+           ])
+           ->addQueryInstructions(function ($query) {
 
-        return view('user.clientes.index', compact('clientes'));
+              $user = \Auth::user();
+
+              $query->select('clientes.*')
+                  ->where('clientes.empresa_id', $user->empresa_id);
+          });
+         // we add some columns to the table list
+         $table->addColumn('nome')
+           ->setTitle('Nome')
+           ->isSortable()
+           ->isSearchable()
+           ->useForDestroyConfirmation();
+         $table->addColumn('email')
+           ->setTitle('Email')
+           ->isSortable()
+           ->isSearchable()
+           ->useForDestroyConfirmation();
+         $table->addColumn('endereco')
+           ->setTitle('Endereço')
+           ->isSearchable()
+           ->useForDestroyConfirmation();
+         $table->addColumn('celular')
+           ->setTitle('Celular')
+           ->isSearchable()
+           ->useForDestroyConfirmation();
+         $table->addColumn('telefone')
+           ->setTitle('Telefone')
+           ->isSearchable()
+           ->useForDestroyConfirmation();;
+
+        return view('user.clientes.index', compact('clientes','table'));
     }
 
     /**
@@ -87,7 +124,7 @@ class ClientesController extends Controller
      */
     public function edit($id)
     {
-        $cliente = Cliente::uuid($id);
+        $cliente = Cliente::findOrFail($id);
         return view('user.clientes.edit', compact('cliente'));
     }
 
@@ -140,20 +177,11 @@ class ClientesController extends Controller
      */
     public function destroy($id)
     {
-        try {
-            $registro = Cliente::findOrFail($id);
-            $registro->delete();
+        $registro = Cliente::findOrFail($id);
+        $registro->delete();
 
-            return response()->json([
-              'code' => 201,
-              'message' => 'Removido com sucesso!'
-            ]);
+        flash('Removido com sucesso!')->success()->important();
 
-        } catch(Exception $e) {
-            return response()->json([
-              'code' => 501,
-              'message' => $e->getMessage()
-            ]);
-        }
+        return redirect()->route('clients.index');
     }
 }

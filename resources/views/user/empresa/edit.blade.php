@@ -1,23 +1,14 @@
-@extends('adminlte::page')
+@extends('dashboard.templates.create')
 
 @section('title', 'Configurações da Empresa')
-
-@section('content_header')
-    <h1>Configurações da Empresa</h1>
-@stop
 
 @section('content')
 
 <div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
 
-  <div class="col-md-12">
-    <div class="box box-success">
-      <div class="box-header with-border">
-        <h3 class="box-title">Editar Informações</h3>
-      </div>
-      <div class="box-body">
-
-        <form role="form" method="post" action="{{ route('companies.update', $empresa->id) }}" enctype="multipart/form-data">
+          <form role="form" method="post" action="{{ route('companies.update', $empresa->id) }}" enctype="multipart/form-data">
             {{ csrf_field() }}
             {{ method_field('PUT') }}
               <input type="hidden" name="return" value="{{ route('config_empresa') }}"/>
@@ -52,7 +43,7 @@
 
               <div class="form-group">
                 <label for="exampleInputFile">Logo</label>
-                <input type="file" id="logo" name="logo"/>
+                <input type="file" class="form-control filestyle" data-size="md" data-buttontext="Selecione um comprovante" data-buttonname="btn-default" id="logo" name="logo"/>
               </div>
 
               <div class="form-group">
@@ -87,10 +78,8 @@
             </div>
           </form>
 
-      </div>
+        </div>
     </div>
-  </div>
-
 </div>
 
 @stop

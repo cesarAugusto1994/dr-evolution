@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel='shortcut icon' type='image/x-icon' href="{{asset('dashboard/images/n-colorido.ico')}}" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title_prefix', config('adminlte.title_prefix', ''))
-@yield('title', config('adminlte.title', 'AdminLTE 2'))
+@yield('title', config('adminlte.title', 'ImobiNavalha'))
 @yield('title_postfix', config('adminlte.title_postfix', ''))</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/font-awesome/css/font-awesome.min.css') }}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/Ionicons/css/ionicons.min.css') }}">
+
+    <link href="{{ asset('dashboard/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('dashboard/css/icons.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('dashboard/css/metismenu.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('dashboard/css/style.css') }}" rel="stylesheet" type="text/css" />
 
     @if(config('adminlte.plugins.select2'))
         <!-- Select2 -->
@@ -22,16 +22,13 @@
     @endif
 
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/AdminLTE.min.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('/css/sweetalert2.min.css') }}">
 
     @if(config('adminlte.plugins.datatables'))
         <!-- DataTables with bootstrap 3 style -->
         <link rel="stylesheet" href="//cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.css">
     @endif
+
+
 
     @yield('adminlte_css')
 
@@ -47,9 +44,15 @@
 
 @yield('body')
 
-<script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
-<script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.slimscroll.min.js') }}"></script>
-<script src="{{ asset('vendor/adminlte/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('dashboard/js/jquery.min.js') }}"></script>
+<script src="{{ asset('dashboard/js/popper.min.js') }}"></script>
+<script src="{{ asset('dashboard/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('dashboard/js/metisMenu.min.js') }}"></script>
+<script src="{{ asset('dashboard/js/waves.js') }}"></script>
+<script src="{{ asset('dashboard/js/jquery.slimscroll.js') }}"></script>
+
+<script src="{{ asset('dashboard/js/jquery.core.js') }}"></script>
+<script src="{{ asset('dashboard/js/jquery.app.js') }}"></script>
 
 @if(config('adminlte.plugins.select2'))
     <!-- Select2 -->
@@ -66,74 +69,17 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js"></script>
 @endif
 
+
+
 @yield('adminlte_js')
 
-    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
+<script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+$(".alert").delay(4000).slideUp(200, function() {
+    $(this).alert('close');
+});
 
-    <script>
-
-      $('.money').mask('000.000.000.000.000,00', {reverse: true});
-      $('.date').mask('00/00/0000');
-      $('.percent').mask('##0,00%', {reverse: true});
-
-    </script>
-
-    <script>
-
-      $(".btnRemoveItem").click(function(e) {
-          var self = $(this);
-
-          swal({
-            title: 'Remover este item?',
-            text: "Não será possível recuperá-lo!",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sim',
-            cancelButtonText: 'Cancelar'
-            }).then((result) => {
-            if (result.value) {
-
-              e.preventDefault();
-
-              $.ajax({
-                headers: {
-                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                 },
-                url: self.data('route'),
-                type: 'POST',
-                dataType: 'json',
-                data: {
-                  _method: 'DELETE'
-                }
-              }).done(function() {
-
-                self.parents('tr').hide();
-
-                const toast = swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000
-                });
-
-                toast({
-                  type: 'success',
-                  title: 'O registro foi removido com sucesso.'
-                })
-
-              });
-
-
-            }
-          });
-
-      });
-
-    </script>
+</script>
 
 </body>
 </html>

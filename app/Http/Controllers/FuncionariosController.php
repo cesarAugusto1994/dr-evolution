@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Funcionario;
 use Illuminate\Support\Facades\Validator;
+use Okipa\LaravelBootstrapTableList\TableList;
 
 class FuncionariosController extends Controller
 {
@@ -15,11 +16,44 @@ class FuncionariosController extends Controller
      */
     public function index()
     {
-        $user = \Auth::user();
+        $table = app(TableList::class)
+           ->setModel(Funcionario::class)
+           ->setRoutes([
+               'index'      => ['alias' => 'employees.index', 'parameters' => []],
+               'edit'       => ['alias' => 'employees.edit', 'parameters' => []],
+               'destroy'    => ['alias' => 'employees.destroy', 'parameters' => []],
+           ])
+           ->addQueryInstructions(function ($query) {
 
-        $funcionarios = Funcionario::where('empresa_id', $user->empresa_id)->paginate();
+              $user = \Auth::user();
 
-        return view('user.funcionarios.index', compact('funcionarios'));
+              $query->select('funcionarios.*')
+                  ->where('funcionarios.empresa_id', $user->empresa_id);
+          });
+         // we add some columns to the table list
+         $table->addColumn('nome')
+           ->setTitle('Nome')
+           ->isSortable()
+           ->isSearchable()
+           ->useForDestroyConfirmation();
+         $table->addColumn('email')
+           ->setTitle('Email')
+           ->isSearchable()
+           ->useForDestroyConfirmation();
+         $table->addColumn('endereco')
+           ->setTitle('Endereço')
+           ->isSearchable()
+           ->useForDestroyConfirmation();
+         $table->addColumn('celular')
+           ->setTitle('Celular')
+           ->isSearchable()
+           ->useForDestroyConfirmation();
+         $table->addColumn('telefone')
+           ->setTitle('Telefone')
+           ->isSearchable()
+           ->useForDestroyConfirmation();;
+
+        return view('user.funcionarios.index', compact('table'));
     }
 
     /**
@@ -72,7 +106,7 @@ class FuncionariosController extends Controller
 
         flash('Funcionário adicionado com sucesso!')->success()->important();
 
-        return redirect()->route('funcionarios.index');
+        return redirect()->route('employees.index');
     }
 
     /**
@@ -94,7 +128,7 @@ class FuncionariosController extends Controller
      */
     public function edit($id)
     {
-        $funcionario = Funcionario::uuid($id);
+        $funcionario = Funcionario::findOrFail($id);
         return view('user.funcionarios.edit', compact('funcionario'));
     }
 
@@ -152,20 +186,11 @@ class FuncionariosController extends Controller
      */
     public function destroy($id)
     {
-        try {
-            $registro = Funcionario::findOrFail($id);
-            $registro->delete();
+        $registro = Funcionario::findOrFail($id);
+        $registro->delete();
 
-            return response()->json([
-              'code' => 201,
-              'message' => 'Removido com sucesso!'
-            ]);
+        flash('Removido com sucesso!')->success()->important();
 
-        } catch(Exception $e) {
-            return response()->json([
-              'code' => 501,
-              'message' => $e->getMessage()
-            ]);
-        }
+        return redirect()->route('employees.index');
     }
 }
