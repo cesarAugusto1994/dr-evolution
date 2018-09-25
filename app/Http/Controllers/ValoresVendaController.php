@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produto\ValorVenda;
 use Illuminate\Support\Facades\Validator;
+use Okipa\LaravelBootstrapTableList\TableList;
 
 class ValoresVendaController extends Controller
 {
@@ -15,9 +16,31 @@ class ValoresVendaController extends Controller
      */
     public function index()
     {
-        $valores = ValorVenda::paginate();
+        $table = app(TableList::class)
+          ->setModel(ValorVenda::class)
+          ->setRoutes([
+              'index'      => ['alias' => 'values.index', 'parameters' => []],
+              'edit'       => ['alias' => 'values.edit', 'parameters' => []],
+              'destroy'    => ['alias' => 'values.destroy', 'parameters' => []],
+          ])
+          ->addQueryInstructions(function ($query) {
+               $query->select('valores_venda.*')
+                   ->where('valores_venda.empresa_id', \Auth::user()->empresa_id);
+           });
+        // we add some columns to the table list
+        $table->addColumn('nome')
+          ->setTitle('Nome')
+          ->isSortable()
+          ->isSearchable()
+          ->useForDestroyConfirmation();
 
-        return view('user.valores-venda.index', compact('valores'));
+        $table->addColumn('porcentagem')
+          ->setTitle('Porcentagem')
+          ->isSortable()
+          ->isSearchable()
+          ->useForDestroyConfirmation();
+
+       return view('user.valores-venda.index', compact('table'));
     }
 
     /**
@@ -81,7 +104,7 @@ class ValoresVendaController extends Controller
      */
     public function edit($id)
     {
-        $valor = ValorVenda::uuid($id);
+        $valor = ValorVenda::findOrFail($id);
         return view('user.valores-venda.edit', compact('valor'));
     }
 

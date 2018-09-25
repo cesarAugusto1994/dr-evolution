@@ -17,7 +17,6 @@ class ClientesController extends Controller
      */
     public function index()
     {
-
         $table = app(TableList::class)
            ->setModel(Cliente::class)
            ->setRoutes([

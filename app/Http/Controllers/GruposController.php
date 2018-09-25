@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produto\Grupo;
+use Okipa\LaravelBootstrapTableList\TableList;
 
 class GruposController extends Controller
 {
@@ -14,9 +15,25 @@ class GruposController extends Controller
      */
     public function index()
     {
-        $user = \Auth::user();
-        $grupos = Grupo::where('empresa_id', $user->empresa_id)->paginate();
-        return view('user.grupos.index', compact('grupos'));
+         $table = app(TableList::class)
+           ->setModel(Grupo::class)
+           ->setRoutes([
+               'index'      => ['alias' => 'groups.index', 'parameters' => []],
+               'edit'       => ['alias' => 'groups.edit', 'parameters' => []],
+               'destroy'    => ['alias' => 'groups.destroy', 'parameters' => []],
+           ])
+           ->addQueryInstructions(function ($query) {
+                $query->select('grupos.*')
+                    ->where('grupos.empresa_id', \Auth::user()->empresa_id);
+            });
+         // we add some columns to the table list
+         $table->addColumn('nome')
+           ->setTitle('Nome')
+           ->isSortable()
+           ->isSearchable()
+           ->useForDestroyConfirmation();
+
+        return view('user.grupos.index', compact('table'));
     }
 
     /**

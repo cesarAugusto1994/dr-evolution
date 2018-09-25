@@ -16,9 +16,6 @@ class ExtrasController extends Controller
      */
     public function index()
     {
-        $user = \Auth::user();
-        $extras = Extra::where('empresa_id', $user->empresa_id)->paginate();
-
          $table = app(TableList::class)
            ->setModel(Extra::class)
            ->setRoutes([
@@ -37,7 +34,7 @@ class ExtrasController extends Controller
            ->isSearchable()
            ->useForDestroyConfirmation();
 
-        return view('user.extras.index', compact('extras', 'table'));
+        return view('user.extras.index', compact('table'));
 
     }
 
@@ -48,7 +45,7 @@ class ExtrasController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.extras.create');
     }
 
     /**
@@ -59,7 +56,15 @@ class ExtrasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->request->all();
+
+        $user = \Auth::user();
+
+        $data['empresa_id'] = $user->empresa_id;
+
+        Extra::create($data);
+
+        return redirect()->route('extras.index');
     }
 
     /**
@@ -81,7 +86,9 @@ class ExtrasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = \Auth::user();
+        $extra = Extra::findOrFail($id);
+        return view('user.extras.edit', compact('extra'));
     }
 
     /**
@@ -93,7 +100,11 @@ class ExtrasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->request->all();
+        $extra = Extra::findOrFail($id);
+        $extra->update($data);
+
+        return redirect()->route('extras.index');
     }
 
     /**
@@ -104,6 +115,11 @@ class ExtrasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $registro = Extra::findOrFail($id);
+        $registro->delete();
+
+        flash('Removido com sucesso!')->success()->important();
+
+        return redirect()->route('extras.index');
     }
 }

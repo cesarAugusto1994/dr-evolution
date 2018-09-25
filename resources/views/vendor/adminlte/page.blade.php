@@ -26,12 +26,12 @@
 
           <!-- LOGO -->
           <div class="topbar-left">
-              <a href="index.html" class="logo">
+              <a href="{{route('home')}}" class="logo">
                   <span>
-                      <img src="{{ asset('dashboard/images/navalha-colorido.png') }}" alt="">
+                      <img src="{{ route('image',['link'=>\App\Helpers\Helper::config('logo-aplicacao')]) }}" alt="">
                   </span>
                   <i>
-                      <img src="{{ asset('dashboard/images/n-colorido.png') }}" alt="">
+                      <img src="{{ route('image',['link'=>\App\Helpers\Helper::config('logo-2')]) }}" alt="">
                   </i>
               </a>
           </div>
@@ -213,6 +213,12 @@
                     <li>
                         <a href="{{ route('companies.index') }}">
                             <i class="mdi mdi-view-dashboard"></i><span> Empresas </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('configs.index') }}">
+                            <i class="ti-settings"></i><span> Configurações </span>
                         </a>
                     </li>
 

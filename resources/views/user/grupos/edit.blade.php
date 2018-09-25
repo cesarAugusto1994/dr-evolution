@@ -1,23 +1,14 @@
-@extends('adminlte::page')
+@extends('dashboard.templates.edit')
 
-@section('title', 'Grupos')
-
-@section('content_header')
-    <h1>Grupos</h1>
-@stop
+@section('title', 'Editar Grupo')
 
 @section('content')
 
 <div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
 
-  <div class="col-md-12">
-    <div class="box box-success">
-      <div class="box-header with-border">
-        <h3 class="box-title">Novo Grupo</h3>
-      </div>
-      <div class="box-body">
-
-        <form role="form" method="post" action="{{ route('groups.update',$grupo->id) }}">
+          <form role="form" method="post" action="{{ route('groups.update',$grupo->id) }}">
             {{ csrf_field() }}
             {{ method_field('PUT') }}
             <div class="box-body">
@@ -66,14 +57,12 @@
             </div>
 
             <div class="box-footer">
-              <button type="submit" class="btn btn-primary">Salvar</button>
+              <button type="submit" class="btn btn-success">Salvar</button>
             </div>
           </form>
 
-      </div>
+        </div>
     </div>
-  </div>
-
 </div>
 
 @stop

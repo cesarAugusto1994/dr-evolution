@@ -15,11 +15,9 @@
     <link href="{{ asset('dashboard/css/icons.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('dashboard/css/metismenu.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('dashboard/css/style.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css">
 
-    @if(config('adminlte.plugins.select2'))
-        <!-- Select2 -->
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css">
-    @endif
+    <link href="{{ asset('dashboard/plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- Theme style -->
 
@@ -50,14 +48,9 @@
 <script src="{{ asset('dashboard/js/metisMenu.min.js') }}"></script>
 <script src="{{ asset('dashboard/js/waves.js') }}"></script>
 <script src="{{ asset('dashboard/js/jquery.slimscroll.js') }}"></script>
-
 <script src="{{ asset('dashboard/js/jquery.core.js') }}"></script>
 <script src="{{ asset('dashboard/js/jquery.app.js') }}"></script>
-
-@if(config('adminlte.plugins.select2'))
-    <!-- Select2 -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-@endif
+<script src="{{ asset('dashboard/plugins/select2/js/select2.min.js') }}"></script>
 
 @if(config('adminlte.plugins.datatables'))
     <!-- DataTables with bootstrap 3 renderer -->

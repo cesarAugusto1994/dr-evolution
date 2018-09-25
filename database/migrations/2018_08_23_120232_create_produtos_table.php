@@ -39,6 +39,7 @@ class CreateProdutosTable extends Migration
             $table->float('altura')->default(0.00);
             $table->float('comprimento')->default(0.00);
             $table->longText('descricao')->nullable();
+            $table->float('comissao')->nullable();
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('empresa_id')->unsigned();

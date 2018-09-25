@@ -1,21 +1,12 @@
-@extends('adminlte::page')
+@extends('dashboard.templates.create')
 
 @section('title', 'Grupos')
-
-@section('content_header')
-    <h1>Grupos</h1>
-@stop
 
 @section('content')
 
 <div class="row">
-
-  <div class="col-md-12">
-    <div class="box box-success">
-      <div class="box-header with-border">
-        <h3 class="box-title">Novo Grupo</h3>
-      </div>
-      <div class="box-body">
+    <div class="col-sm-12">
+        <div class="card-box">
 
         <form role="form" method="post" action="{{ route('groups.store') }}">
             {{ csrf_field() }}
@@ -27,7 +18,7 @@
 
                   <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
                     <label for="nome">Nome</label>
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" value="{{ old('nome') }}">
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" value="{{ old('nome') }}" required>
                     @if ($errors->has('nome'))
         							<span class="help-block">
         								<strong>{{ $errors->first('nome') }}</strong>
@@ -44,7 +35,7 @@
                     <select class="form-control" id="grupo_pai" name="grupo_pai" placeholder="Grupo">
                       <option value="">Sem Grupo Pai</option>
                       @foreach(\App\Models\Produto\Grupo::all() as $item)
-                          
+
                           <option value="{{ $item->id }}" {{ old('grupo_pai') == $item->id ? 'selected' : '' }}>{{ $item->nome }}</option>
                       @endforeach
                     </select>
@@ -63,14 +54,13 @@
             </div>
 
             <div class="box-footer">
-              <button type="submit" class="btn btn-primary">Salvar</button>
+              <button type="submit" class="btn btn-success">Salvar</button>
             </div>
           </form>
 
-      </div>
+        </div>
     </div>
-  </div>
-
 </div>
+
 
 @stop

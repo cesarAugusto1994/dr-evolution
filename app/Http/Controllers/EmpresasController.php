@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Okipa\LaravelBootstrapTableList\TableList;
 use App\Models\Empresa;
 use App\User;
 use jeremykenedy\LaravelRoles\Models\Role;
@@ -17,8 +18,62 @@ class EmpresasController extends Controller
      */
     public function index()
     {
-        $empresas = Empresa::paginate();
-        return view('admin.empresas.index', compact('empresas'));
+        $table = app(TableList::class)
+           ->setModel(Empresa::class)
+           ->setRoutes([
+               'index'      => ['alias' => 'companies.index', 'parameters' => []],
+               'edit'       => ['alias' => 'companies.edit', 'parameters' => []],
+               'destroy'    => ['alias' => 'companies.destroy', 'parameters' => []],
+           ]);
+
+       $table->addColumn('nome')
+         ->setTitle('Nome')
+         ->isSortable()
+         ->isSearchable()
+         ->useForDestroyConfirmation();
+
+       $table->addColumn('email')
+         ->setTitle('Email')
+         ->isSortable()
+         ->isSearchable();
+
+       $table->addColumn('logo')
+         ->setTitle('Logo')
+         ->isSortable()
+         ->isSearchable();
+
+       $table->addColumn('nif')
+         ->setTitle('NIF')
+         ->isSortable()
+         ->isSearchable();
+
+       $table->addColumn('cambio')
+         ->setTitle('cambio')
+         ->isSortable()
+         ->isSearchable();
+
+       $table->addColumn('cidade')
+         ->setTitle('Cidade')
+         ->isSortable()
+         ->isSearchable();
+
+       $table->addColumn('endereco')
+         ->setTitle('Endereco')
+         ->isSortable()
+         ->isSearchable();
+
+       $table->addColumn('telefone')
+         ->setTitle('telefolne')
+         ->isSortable()
+         ->isSearchable();
+
+       $table->addColumn('celular')
+         ->setTitle('Celular')
+         ->isSortable()
+         ->isSearchable();
+
+
+        return view('admin.empresas.index', compact('table'));
     }
 
     /**

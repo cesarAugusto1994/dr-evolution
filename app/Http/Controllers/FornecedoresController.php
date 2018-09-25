@@ -183,4 +183,19 @@ class FornecedoresController extends Controller
 
       return redirect()->route('vendors.index');
     }
+
+    public function toAjax(Request $request)
+    {
+        $data = $request->request->all();
+
+        $search = $data['search'];
+
+        $user = \Auth::user();
+
+        $empreendimentos = Fornecedor::where('nome', 'like', "%$search%")
+        ->orWhere('id', $search)
+        ->where('empresa_id', $user->empresa_id)->get();
+
+        return $empreendimentos->toJson();
+    }
 }

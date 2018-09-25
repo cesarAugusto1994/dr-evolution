@@ -1,23 +1,14 @@
-@extends('adminlte::page')
+@extends('dashboard.templates.create')
 
-@section('title', 'Valores Venda')
-
-@section('content_header')
-    <h1>Valores Venda</h1>
-@stop
+@section('title', 'Editar Valor de Venda')
 
 @section('content')
 
 <div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
 
-  <div class="col-md-12">
-    <div class="box box-success">
-      <div class="box-header with-border">
-        <h3 class="box-title">Editar Valor Venda</h3>
-      </div>
-      <div class="box-body">
-
-        <form role="form" method="post" action="{{ route('values.update', $valor->uuid) }}" enctype="multipart/form-data">
+          <form role="form" method="post" action="{{ route('values.update', $valor->uuid) }}" enctype="multipart/form-data">
             {{ csrf_field() }}
             {{ method_field('PUT') }}
             <div class="box-body">
@@ -58,14 +49,12 @@
             </div>
 
             <div class="box-footer">
-              <button type="submit" class="btn btn-primary">Salvar</button>
+              <button type="submit" class="btn btn-success">Salvar</button>
             </div>
           </form>
 
-      </div>
+        </div>
     </div>
-  </div>
-
 </div>
 
 @stop

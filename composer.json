@@ -16,7 +16,9 @@
         "laracasts/flash": "^3.0",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "okipa/laravel-bootstrap-table-list": "^2.0"
+        "okipa/laravel-bootstrap-table-list": "^2.0",
+        "doctrine/common": "2.7.0",
+        "doctrine/dbal": "2.5.13"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('image/external', 'ImagensController@image')->name('image');
+
 Route::middleware('auth')->group(function() {
 
   Route::get('/avatar', 'UsersController@avatar')->name('avatar');
@@ -31,6 +33,7 @@ Route::middleware('auth')->group(function() {
 
     Route::resource('companies', 'EmpresasController');
     Route::resource('users', 'UsersController');
+    Route::resource('configs', 'ConfigController');
 
   });
 
@@ -46,6 +49,8 @@ Route::middleware('auth')->group(function() {
     Route::resource('extras', 'ExtrasController');
 
     Route::resource('values', 'ValoresVendaController');
+
+      Route::get('/fornecedores/ajax', 'FornecedoresController@toAjax')->name('fornecedores');
 
   });
 
