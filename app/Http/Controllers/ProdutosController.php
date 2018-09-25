@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Produto;
+use App\Models\{Produto,Fornecedor};
 use Illuminate\Support\Facades\Validator;
 use Okipa\LaravelBootstrapTableList\TableList;
 
@@ -78,7 +78,21 @@ class ProdutosController extends Controller
         $data['user_id'] = \Auth::user()->id;
         $data['empresa_id'] = \Auth::user()->empresa_id;
 
-        Produto::create($data);
+        $produto = Produto::create($data);
+
+        if($request->has('fornecedores')) {
+
+          foreach ($data['fornecedores'] as $key => $item) {
+              $fornecedor = Fornecedor::findOrFail($item);
+
+              \App\Models\Produto\Fornecedor::create([
+                'fornecedor_id' => $fornecedor->id,
+                'produto_id' => $produto->id
+              ]);
+          }
+
+
+        }
 
         flash('Produto adicionado com sucesso!')->success()->important();
 
@@ -132,6 +146,6 @@ class ProdutosController extends Controller
 
         flash('Removido com sucesso!')->success()->important();
 
-        return redirect()->route('extras.index');
+        return redirect()->route('products.index');
     }
 }
