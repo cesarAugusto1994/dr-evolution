@@ -16,44 +16,11 @@ class FuncionariosController extends Controller
      */
     public function index()
     {
-        $table = app(TableList::class)
-           ->setModel(Funcionario::class)
-           ->setRoutes([
-               'index'      => ['alias' => 'employees.index', 'parameters' => []],
-               'edit'       => ['alias' => 'employees.edit', 'parameters' => []],
-               'destroy'    => ['alias' => 'employees.destroy', 'parameters' => []],
-           ])
-           ->addQueryInstructions(function ($query) {
+        $user = \Auth::user();
 
-              $user = \Auth::user();
+        $funcionarios = Funcionario::where('empresa_id', $user->empresa_id)->paginate();
 
-              $query->select('funcionarios.*')
-                  ->where('funcionarios.empresa_id', $user->empresa_id);
-          });
-         // we add some columns to the table list
-         $table->addColumn('nome')
-           ->setTitle('Nome')
-           ->isSortable()
-           ->isSearchable()
-           ->useForDestroyConfirmation();
-         $table->addColumn('email')
-           ->setTitle('Email')
-           ->isSearchable()
-           ->useForDestroyConfirmation();
-         $table->addColumn('endereco')
-           ->setTitle('Endereço')
-           ->isSearchable()
-           ->useForDestroyConfirmation();
-         $table->addColumn('celular')
-           ->setTitle('Celular')
-           ->isSearchable()
-           ->useForDestroyConfirmation();
-         $table->addColumn('telefone')
-           ->setTitle('Telefone')
-           ->isSearchable()
-           ->useForDestroyConfirmation();;
-
-        return view('user.funcionarios.index', compact('table'));
+        return view('user.funcionarios.index', compact('funcionarios'));
     }
 
     /**

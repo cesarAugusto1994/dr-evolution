@@ -16,44 +16,11 @@ class FornecedoresController extends Controller
      */
     public function index()
     {
-        $table = app(TableList::class)
-           ->setModel(Fornecedor::class)
-           ->setRoutes([
-               'index'      => ['alias' => 'vendors.index', 'parameters' => []],
-               'edit'       => ['alias' => 'vendors.edit', 'parameters' => []],
-               'destroy'    => ['alias' => 'vendors.destroy', 'parameters' => []],
-           ])
-           ->addQueryInstructions(function ($query) {
+        $user = \Auth::user();
 
-              $user = \Auth::user();
+        $fornecedores = Fornecedor::where('empresa_id', $user->empresa_id)->paginate();
 
-              $query->select('fornecedores.*')
-                  ->where('fornecedores.empresa_id', $user->empresa_id);
-          });
-         // we add some columns to the table list
-         $table->addColumn('nome')
-           ->setTitle('Nome')
-           ->isSortable()
-           ->isSearchable()
-           ->useForDestroyConfirmation();
-         $table->addColumn('email')
-           ->setTitle('Email')
-           ->isSearchable()
-           ->useForDestroyConfirmation();
-         $table->addColumn('endereco')
-           ->setTitle('Endereço')
-           ->isSearchable()
-           ->useForDestroyConfirmation();
-         $table->addColumn('celular')
-           ->setTitle('Celular')
-           ->isSearchable()
-           ->useForDestroyConfirmation();
-         $table->addColumn('telefone')
-           ->setTitle('Telefone')
-           ->isSearchable()
-           ->useForDestroyConfirmation();;
-
-        return view('user.fornecedores.index', compact('table'));
+        return view('user.fornecedores.index', compact('fornecedores'));
     }
 
     /**

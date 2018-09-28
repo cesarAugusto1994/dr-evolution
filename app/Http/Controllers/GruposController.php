@@ -15,25 +15,11 @@ class GruposController extends Controller
      */
     public function index()
     {
-         $table = app(TableList::class)
-           ->setModel(Grupo::class)
-           ->setRoutes([
-               'index'      => ['alias' => 'groups.index', 'parameters' => []],
-               'edit'       => ['alias' => 'groups.edit', 'parameters' => []],
-               'destroy'    => ['alias' => 'groups.destroy', 'parameters' => []],
-           ])
-           ->addQueryInstructions(function ($query) {
-                $query->select('grupos.*')
-                    ->where('grupos.empresa_id', \Auth::user()->empresa_id);
-            });
-         // we add some columns to the table list
-         $table->addColumn('nome')
-           ->setTitle('Nome')
-           ->isSortable()
-           ->isSearchable()
-           ->useForDestroyConfirmation();
+        $user = \Auth::user();
 
-        return view('user.grupos.index', compact('table'));
+        $grupos = Grupo::where('empresa_id', $user->empresa_id)->paginate();
+
+        return view('user.grupos.index', compact('grupos'));
     }
 
     /**

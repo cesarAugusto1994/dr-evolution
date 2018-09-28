@@ -25,13 +25,13 @@ Route::middleware('auth')->group(function() {
   Route::get('/home', 'HomeController@index')->name('home');
   Route::get('logo', 'UsersController@logo')->name('logo');
 
-  Route::get('image/external', 'ImagensController@image')->name('image');
-
   Route::get('lockscreen', 'LockAccountController@lockscreen')->name('lockscreen');
   Route::post('lockscreen', 'LockAccountController@unlock')->name('post_lockscreen');
 
   Route::post('/produtos/imagem/remove/{id}', "ProdutosController@imagemRemove")->name('produto_imagem_remove');
   Route::post('/produtos/fornecedor/remove/{id}', "ProdutosController@fornecedorRemove")->name('produto_fornecedor_remove');
+
+  Route::get('image/external', 'ImagensController@image')->name('image');
 
   Route::prefix('admin')->group(function() {
 

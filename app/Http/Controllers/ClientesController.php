@@ -17,45 +17,11 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        $table = app(TableList::class)
-           ->setModel(Cliente::class)
-           ->setRoutes([
-               'index'      => ['alias' => 'clients.index', 'parameters' => []],
-               'edit'       => ['alias' => 'clients.edit', 'parameters' => []],
-               'destroy'    => ['alias' => 'clients.destroy', 'parameters' => []],
-           ])
-           ->addQueryInstructions(function ($query) {
+         $user = \Auth::user();
 
-              $user = \Auth::user();
+         $clientes = Cliente::where('empresa_id', $user->empresa_id)->paginate();
 
-              $query->select('clientes.*')
-                  ->where('clientes.empresa_id', $user->empresa_id);
-          });
-         // we add some columns to the table list
-         $table->addColumn('nome')
-           ->setTitle('Nome')
-           ->isSortable()
-           ->isSearchable()
-           ->useForDestroyConfirmation();
-         $table->addColumn('email')
-           ->setTitle('Email')
-           ->isSortable()
-           ->isSearchable()
-           ->useForDestroyConfirmation();
-         $table->addColumn('endereco')
-           ->setTitle('Endereço')
-           ->isSearchable()
-           ->useForDestroyConfirmation();
-         $table->addColumn('celular')
-           ->setTitle('Celular')
-           ->isSearchable()
-           ->useForDestroyConfirmation();
-         $table->addColumn('telefone')
-           ->setTitle('Telefone')
-           ->isSearchable()
-           ->useForDestroyConfirmation();;
-
-        return view('user.clientes.index', compact('clientes','table'));
+         return view('user.clientes.index', compact('clientes'));
     }
 
     /**

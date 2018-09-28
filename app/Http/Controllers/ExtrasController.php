@@ -16,26 +16,11 @@ class ExtrasController extends Controller
      */
     public function index()
     {
-         $table = app(TableList::class)
-           ->setModel(Extra::class)
-           ->setRoutes([
-               'index'      => ['alias' => 'extras.index', 'parameters' => []],
-               'edit'       => ['alias' => 'extras.edit', 'parameters' => []],
-               'destroy'    => ['alias' => 'extras.destroy', 'parameters' => []],
-           ])
-           ->addQueryInstructions(function ($query) {
-                $query->select('extras.*')
-                    ->where('extras.empresa_id', \Auth::user()->empresa_id);
-            });
-         // we add some columns to the table list
-         $table->addColumn('nome')
-           ->setTitle('Nome')
-           ->isSortable()
-           ->isSearchable()
-           ->useForDestroyConfirmation();
+         $user = \Auth::user();
 
-        return view('user.extras.index', compact('table'));
+         $extras = Extra::where('empresa_id', $user->empresa_id)->paginate();
 
+         return view('user.extras.index', compact('extras'));
     }
 
     /**
