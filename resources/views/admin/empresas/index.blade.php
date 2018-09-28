@@ -50,6 +50,7 @@
                           <td>{{ $empresa->created_at }}</td>
                           <td>
                               <a href="{{ route('companies.edit', $empresa->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                              <a href="{{ route('users.index', ['empresa'=>$empresa->id]) }}" class="btn btn-success btn-sm"><i class="fa fa-users"></i></a>
                           </td>
 
                       </tr>
