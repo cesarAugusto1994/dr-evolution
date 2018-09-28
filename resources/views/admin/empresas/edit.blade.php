@@ -1,6 +1,6 @@
 @extends('dashboard.templates.edit')
 
-@section('title', 'Editar Cliente')
+@section('title', 'Editar Empresa')
 
 @section('content')
 
