@@ -1,111 +1,98 @@
 @extends('adminlte::page')
 
-@section('title', 'Empresas')
-
-@section('content_header')
-    <h1>Empresas</h1>
-@stop
+@section('title', 'Empresa >> Novo Usuário')
 
 @section('content')
 
 <div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+          <form role="form" method="post" action="{{ route('users.store') }}" enctype="multipart/form-data">
+              {{ csrf_field() }}
+              <div class="box-body">
+                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                  <label for="name">Nome</label>
+                  <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
+                  @if ($errors->has('name'))
+                    <span class="help-block">
+                      <strong>{{ $errors->first('name') }}</strong>
+                    </span>
+                  @endif
+                </div>
+                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
+                  @if ($errors->has('email'))
+                    <span class="help-block">
+                      <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                  @endif
+                </div>
 
-  <div class="col-md-12">
-    <div class="box box-success">
-      <div class="box-header with-border">
-        <h3 class="box-title">Novo Usuário</h3>
-      </div>
-      <div class="box-body">
+                <div class="form-group{{ $errors->has('empresa_id') ? ' has-error' : '' }}">
+                  <label for="telefone">Empresa</label>
+                  <select class="form-control" id="empresa_id" name="empresa_id">
+                    <option></option>
+                    @foreach($empresas as $empresa)
+                    <option value="{{ $empresa->id }}">{{ $empresa->nome }}</option>
+                    @endforeach
+                  </select>
+                  @if ($errors->has('empresa_id'))
+                    <span class="help-block">
+                      <strong>{{ $errors->first('empresa_id') }}</strong>
+                    </span>
+                  @endif
+                </div>
 
-        <form role="form" method="post" action="{{ route('users.store') }}" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            <div class="box-body">
-              <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                <label for="name">Nome</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Nome" value="{{ old('name') }}">
-                @if ($errors->has('name'))
-    							<span class="help-block">
-    								<strong>{{ $errors->first('name') }}</strong>
-    							</span>
-    						@endif
+                <div class="form-group{{ $errors->has('role_id') ? ' has-error' : '' }}">
+                  <label for="telefone">Privilégios</label>
+                  <select class="form-control" id="role_id" name="role_id">
+                    @foreach($roles as $role)
+                    <option value="{{ $role->id }}" {{ $role->name == 'User' ? 'selected' : '' }}>{{ $role->name }}</option>
+                    @endforeach
+                  </select>
+                  @if ($errors->has('role_id'))
+                    <span class="help-block">
+                      <strong>{{ $errors->first('role_id') }}</strong>
+                    </span>
+                  @endif
+                </div>
+
+
+                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                  <label for="cidade">Senha</label>
+                  <input type="password" class="form-control" id="password" name="password" value="{{ old('password') }}">
+                  @if ($errors->has('password'))
+                    <span class="help-block">
+                      <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                  @endif
+                </div>
+
+                <div class="form-group{{ $errors->has('password_confirm') ? ' has-error' : '' }}">
+                  <label for="endereco">Confirmar Senha</label>
+                  <input type="password" class="form-control" id="password_confirm" name="password_confirm" value="{{ old('password_confirm') }}">
+                  @if ($errors->has('password_confirm'))
+                    <span class="help-block">
+                      <strong>{{ $errors->first('password_confirm') }}</strong>
+                    </span>
+                  @endif
+                </div>
+
+
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" name="ativo" value="1"> Ativo
+                  </label>
+                </div>
               </div>
-              <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ old('email') }}">
-                @if ($errors->has('email'))
-    							<span class="help-block">
-    								<strong>{{ $errors->first('email') }}</strong>
-    							</span>
-    						@endif
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Salvar</button>
               </div>
-
-              <div class="form-group{{ $errors->has('empresa_id') ? ' has-error' : '' }}">
-                <label for="telefone">Empresa</label>
-                <select class="form-control" id="empresa_id" name="empresa_id">
-                  <option></option>
-                  @foreach($empresas as $empresa)
-                  <option value="{{ $empresa->id }}">{{ $empresa->nome }}</option>
-                  @endforeach
-                </select>
-                @if ($errors->has('empresa_id'))
-    							<span class="help-block">
-    								<strong>{{ $errors->first('empresa_id') }}</strong>
-    							</span>
-    						@endif
-              </div>
-
-              <div class="form-group{{ $errors->has('role_id') ? ' has-error' : '' }}">
-                <label for="telefone">Privilégios</label>
-                <select class="form-control" id="role_id" name="role_id">
-                  @foreach($roles as $role)
-                  <option value="{{ $role->id }}" {{ $role->name == 'User' ? 'selected' : '' }}>{{ $role->name }}</option>
-                  @endforeach
-                </select>
-                @if ($errors->has('role_id'))
-    							<span class="help-block">
-    								<strong>{{ $errors->first('role_id') }}</strong>
-    							</span>
-    						@endif
-              </div>
-
-
-              <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                <label for="cidade">Senha</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Senha" value="{{ old('password') }}">
-                @if ($errors->has('password'))
-    							<span class="help-block">
-    								<strong>{{ $errors->first('password') }}</strong>
-    							</span>
-    						@endif
-              </div>
-
-              <div class="form-group{{ $errors->has('password_confirm') ? ' has-error' : '' }}">
-                <label for="endereco">Confirmar Senha</label>
-                <input type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="Confirmar Senha" value="{{ old('password_confirm') }}">
-                @if ($errors->has('password_confirm'))
-    							<span class="help-block">
-    								<strong>{{ $errors->first('password_confirm') }}</strong>
-    							</span>
-    						@endif
-              </div>
-
-
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="ativo" value="1"> Ativo
-                </label>
-              </div>
-            </div>
-
-            <div class="box-footer">
-              <button type="submit" class="btn btn-primary">Salvar</button>
-            </div>
-          </form>
-
-      </div>
+            </form>
+        </div>
     </div>
-  </div>
-
 </div>
 
-@stop
+@endsection

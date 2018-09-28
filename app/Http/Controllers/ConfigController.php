@@ -16,40 +16,9 @@ class ConfigController extends Controller
      */
     public function index()
     {
-        $table = app(TableList::class)
-           ->setModel(Config::class)
-           ->setRoutes([
-               'index'      => ['alias' => 'configs.index', 'parameters' => []],
-               'edit'       => ['alias' => 'configs.edit', 'parameters' => []],
-           ]);
+        $configs = Config::paginate();
 
-        $table->addColumn('nome')
-         ->setTitle('Nome')
-         ->isSortable()
-         ->isSearchable()
-         ->useForDestroyConfirmation();
-
-         $table->addColumn('slug')
-          ->setTitle('Slug')
-          ->isSearchable()
-          ->useForDestroyConfirmation();
-
-        $table->addColumn('descricao')
-         ->setTitle('Descrição')
-         ->isSearchable()
-         ->useForDestroyConfirmation();
-
-         $table->addColumn('valor')
-          ->setTitle('Valor')
-          ->useForDestroyConfirmation();
-
-        $table->addColumn('ativo')
-         ->setTitle('Ativo')
-         ->isCustomValue(function ($entity, $column) {
-            return $entity->ativo ? 'Ativo' : 'Inativo';
-         });
-
-        return view('dashboard.configs.index', compact('table'));
+        return view('admin.configs.index', compact('table','configs'));
     }
 
     /**
@@ -59,7 +28,7 @@ class ConfigController extends Controller
      */
     public function create()
     {
-        return view('dashboard.configs.create');
+        return view('admin.configs.create');
     }
 
     /**
@@ -120,7 +89,7 @@ class ConfigController extends Controller
     {
         $config = Config::findOrFail($id);
 
-        return view('dashboard.configs.edit', compact('config'));
+        return view('admin.configs.edit', compact('config'));
     }
 
     /**
