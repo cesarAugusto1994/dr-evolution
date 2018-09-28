@@ -51,6 +51,7 @@
 <script src="{{ asset('dashboard/js/jquery.core.js') }}"></script>
 <script src="{{ asset('dashboard/js/jquery.app.js') }}"></script>
 <script src="{{ asset('dashboard/plugins/select2/js/select2.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.28.2/dist/sweetalert2.all.min.js"></script>
 
 @if(config('adminlte.plugins.datatables'))
     <!-- DataTables with bootstrap 3 renderer -->
@@ -71,6 +72,60 @@
 $(".alert").delay(4000).slideUp(200, function() {
     $(this).alert('close');
 });
+
+</script>
+
+<script>
+
+  $(".btnRemoveItem").click(function(e) {
+      var self = $(this);
+
+      swal({
+        title: 'Remover este item?',
+        text: "Não será possível recuperá-lo!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim',
+        cancelButtonText: 'Cancelar'
+        }).then((result) => {
+        if (result.value) {
+
+          e.preventDefault();
+
+          $.ajax({
+            headers: {
+             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             },
+            url: self.data('route'),
+            type: 'POST',
+            dataType: 'json',
+
+          }).done(function() {
+
+            self.parents('.card-box-images').hide();
+
+            const toast = swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000
+            });
+
+            toast({
+              type: 'success',
+              title: 'Ok!, o registro foi removido com sucesso.'
+            });
+
+
+          });
+
+
+        }
+      });
+
+  });
 
 </script>
 

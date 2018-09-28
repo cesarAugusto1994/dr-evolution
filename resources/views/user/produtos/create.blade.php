@@ -143,7 +143,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"> Mt</span>
                                         </div>
-                                        <input type="text" pattern="" name="largura" id="largura" class="form-control">
+                                        <input type="text" name="largura" id="largura" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -307,7 +307,7 @@
                         </div>
                         <div class="form-group">
                             <label for="estoque_maximo">Estoque máximo</label>
-                            <input type="text" pattern="" name="estoque_maximo" id="estoque_maximo" class="form-control">
+                            <input type="text" name="estoque_maximo" id="estoque_maximo" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="estoque_atual">Estoque atual</label>

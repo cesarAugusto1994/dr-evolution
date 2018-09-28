@@ -21,10 +21,18 @@ class ConfigsTableseeder extends Seeder
 
         $itens = [
           [
-            'nome' => 'Nome Aplicação',
-            'descricao' => 'Nome da aplicação',
-            'slug' => str_slug('Nome Aplicacao'),
-            'valor' => 'DR EVOLUTION',
+            'nome' => 'Nome Site',
+            'descricao' => 'Nome do Site',
+            'slug' => str_slug('Nome Site'),
+            'valor' => 'Imobiliaria',
+            'tipo_id' => 1,
+            'deletar' => false
+          ],
+          [
+            'nome' => 'Logo Site',
+            'descricao' => 'Logo Site',
+            'slug' => str_slug('Logo Site'),
+            'valor' => '/',
             'tipo_id' => 1,
             'deletar' => false
           ],
