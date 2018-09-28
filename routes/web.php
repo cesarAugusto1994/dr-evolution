@@ -22,9 +22,10 @@ Route::get('image/external', 'ImagensController@image')->name('image');
 Route::middleware('auth')->group(function() {
 
   Route::get('/avatar', 'UsersController@avatar')->name('avatar');
-
   Route::get('/home', 'HomeController@index')->name('home');
   Route::get('logo', 'UsersController@logo')->name('logo');
+
+  Route::get('image/external', 'ImagensController@image')->name('image');
 
   Route::get('lockscreen', 'LockAccountController@lockscreen')->name('lockscreen');
   Route::post('lockscreen', 'LockAccountController@unlock')->name('post_lockscreen');

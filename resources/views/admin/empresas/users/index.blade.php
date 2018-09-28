@@ -42,8 +42,8 @@
                         <td><span class="badge {{ $user->ativo ? 'bg-teal' : 'bg-red' }} ">{{ $user->ativo ? 'Ativo' : 'Inativo' }}</span></td>
                         <td>{{ $user->created_at }}</td>
                         <td>
-                          <a class="btn btn-primary" href="{{ route('users.edit', $user->id) }}"><i class="fa fa-edit"></i></a>
-                          <a class="btn btn-danger btnRemoveItem" data-route="{{ route('users.destroy', $user->id) }}"><i class="fa fa-trash"></i></a>
+                          <a class="btn btn-primary btn-sm" href="{{ route('users.edit', $user->id) }}"><i class="fa fa-edit"></i></a>
+                          <a class="btn btn-danger btn-sm btnRemoveItem" data-route="{{ route('users.destroy', $user->id) }}"><i class="fa fa-trash"></i></a>
                         </td>
                       </tr>
                     @empty

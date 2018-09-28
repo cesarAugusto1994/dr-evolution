@@ -54,7 +54,7 @@ class EmpresasController extends Controller
         }
 
         if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
-            $data['logo'] = $request->logo->store('images');
+            $data['logo'] = $request->logo->store('empresas');
         }
 
         $data['ativo'] = !empty($data['ativo']) ? (boolean)$data['ativo'] : false;
@@ -120,7 +120,12 @@ class EmpresasController extends Controller
         }
 
         if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
-            $data['logo'] = $request->logo->path();
+
+            if(\Storage::exists($empresa->logo)) {
+              \Storage::delete($empresa->logo);
+            }
+
+            $data['logo'] = $request->logo->store('empresas');
         }
 
         $data['ativo'] = !empty($data['ativo']) ? (boolean)$data['ativo'] : false;

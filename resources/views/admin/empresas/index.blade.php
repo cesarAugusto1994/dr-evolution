@@ -29,7 +29,7 @@
                       <th>Endereco</th>
                       <th>Telefolne</th>
                       <th>Celular</th>
-                      <th>Cadastro</th>
+                      <th style="width:150px">Cadastro</th>
                       <th>#</th>
                   </tr>
                   </thead>
@@ -40,7 +40,7 @@
                       <tr>
                           <td>{{ $empresa->nome }}</td>
                           <td>{{ $empresa->email }}</td>
-                          <td>{{ $empresa->logo }}</td>
+                          <td><img style="width:42px" alt="" src="{{ route('image', ['link'=>$empresa->logo]) }}"/></td>
                           <td>{{ $empresa->nif }}</td>
                           <td>{{ $empresa->cambio }}</td>
                           <td>{{ $empresa->cidade }}</td>
