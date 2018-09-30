@@ -15,14 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/image/external', 'ImagensController@image')->name('image');
 
-Route::get('image/external', 'ImagensController@image')->name('image');
+Auth::routes();
 
 Route::middleware('auth')->group(function() {
 
   Route::get('/avatar', 'UsersController@avatar')->name('avatar');
-  Route::get('/home', 'HomeController@index')->name('home');
+
   Route::get('logo', 'UsersController@logo')->name('logo');
 
   Route::get('lockscreen', 'LockAccountController@lockscreen')->name('lockscreen');
@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function() {
   Route::post('/produtos/imagem/remove/{id}', "ProdutosController@imagemRemove")->name('produto_imagem_remove');
   Route::post('/produtos/fornecedor/remove/{id}', "ProdutosController@fornecedorRemove")->name('produto_fornecedor_remove');
 
-  Route::get('image/external', 'ImagensController@image')->name('image');
+  Route::get('/', 'HomeController@index')->name('home');
 
   Route::prefix('admin')->group(function() {
 
@@ -39,11 +39,15 @@ Route::middleware('auth')->group(function() {
     Route::resource('users', 'UsersController');
     Route::resource('configs', 'ConfigController');
 
+    Route::get('/', 'HomeController@index')->name('home_admin');
+
   });
 
   Route::prefix('company')->group(function() {
 
     Route::get('config/company', 'EmpresasController@configsEmpresa')->name('config_empresa');
+
+    Route::get('/', 'HomeController@index')->name('home_company');
 
     Route::resource('clients', 'ClientesController');
     Route::resource('vendors', 'FornecedoresController');
@@ -54,7 +58,7 @@ Route::middleware('auth')->group(function() {
 
     Route::resource('values', 'ValoresVendaController');
 
-      Route::get('/fornecedores/ajax', 'FornecedoresController@toAjax')->name('fornecedores');
+    Route::get('/fornecedores/ajax', 'FornecedoresController@toAjax')->name('fornecedores');
 
   });
 

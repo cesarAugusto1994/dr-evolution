@@ -116,7 +116,7 @@ class ClientesController extends Controller
         }
 
         if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
-            $data['avatar'] = $request->avatar->path();
+            $data['avatar'] = $request->avatar->store('avatar');
         }
 
         $data['ativo'] = !empty($data['ativo']) ? (boolean)$data['ativo'] : false;

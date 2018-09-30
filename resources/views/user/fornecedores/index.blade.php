@@ -21,12 +21,11 @@
                   <thead>
                   <tr>
                       <th>Nome</th>
-
+                      <th>Avatar</th>
                       <th>Email</th>
                       <th>Endereço</th>
                       <th>Celular</th>
                       <th>Telefone</th>
-
                       <th style="width:150px">#</th>
                   </tr>
                   </thead>
@@ -35,6 +34,7 @@
                     @forelse($fornecedores as $fornecedor)
                       <tr>
                         <td>{{ $fornecedor->nome }}</td>
+                        <td><img style="width:42px" alt="" src="{{ route('image', ['link'=>$fornecedor->avatar]) }}"/></td>
                         <td>{{ $fornecedor->email }}</td>
                         <td>{{ $fornecedor->endereco }}</td>
                         <td>{{ $fornecedor->celular }}</td>

@@ -21,8 +21,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        /*$user = $request->user();
+
+        $route = 'home_company';
+
+        if ($user->hasRole('admin')) {
+          $route = 'home_admin';
+        }
+
+        return redirect()->route($route);*/
+
         return view('home');
     }
 }

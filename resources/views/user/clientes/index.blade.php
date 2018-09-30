@@ -21,7 +21,7 @@
                   <thead>
                   <tr>
                       <th>Nome</th>
-
+                      <th>Avatar</th>
                       <th>Email</th>
                       <th>Endereço</th>
                       <th>Celular</th>
@@ -35,6 +35,7 @@
                     @forelse($clientes as $cliente)
                       <tr>
                         <td>{{ $cliente->nome }}</td>
+                        <td><img style="width:42px" alt="" src="{{ route('image', ['link'=>$cliente->avatar]) }}"/></td>
                         <td>{{ $cliente->email }}</td>
                         <td>{{ $cliente->endereco }}</td>
                         <td>{{ $cliente->celular }}</td>

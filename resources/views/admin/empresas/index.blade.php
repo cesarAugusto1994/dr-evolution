@@ -24,7 +24,7 @@
                       <th>Email</th>
                       <th>Logo</th>
                       <th>NIF</th>
-                      <th>cambio</th>
+                      <th>Cambio</th>
                       <th>Cidade</th>
                       <th>Endereco</th>
                       <th>Telefolne</th>
